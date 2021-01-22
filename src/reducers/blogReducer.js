@@ -1,4 +1,5 @@
 const istate = {
+    latestblog:[],
     categoryblog:[],
     blogs:[],
     blogscategory:[],
@@ -18,17 +19,20 @@ const blogReducer = (state=istate,action) => {
                 blogscategory:action.payload
             }
         }
-
         case 'FETCH_CATEGORY_BLOG':{
             return{
                 ...state,
                 categoryblog:action.payload
-
+            }
+        }
+        case 'FETCH_NO_LATEST_BLOG':{
+            return{
+                ...state,
+                latestblog:action.payload
             }
         }
         default :
             return state;
     }
 }
-
 export default blogReducer;

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Body from '../includes/Body'
+import {fetchGetNoLatestBlog} from '../actions/index'
 
 export class Home extends Component {
 
+    componentDidMount(){
+        this.props.fetchGetNoLatestBlog(4);
+    }
 
     render() {
-
-
         return (
             <React.Fragment>
                 <Body>
@@ -482,8 +484,5 @@ const mapStateToProps = (state) => ({
     
 })
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, {fetchGetNoLatestBlog})(Home)

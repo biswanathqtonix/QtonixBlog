@@ -23,3 +23,10 @@ export const fetchCategoryBlog = category => async dispatch => {
     const response = await API.get(`blogcategory/view/${category}`);
     dispatch({type:'FETCH_CATEGORY_BLOG',payload:response.data})
 }
+
+
+// * FETCH LATEST NO OF BLOGS * //
+export const fetchGetNoLatestBlog = no => async dispatch => {
+    const response = await API.get(`blog/latest/${no}`);
+    dispatch({type:'FETCH_NO_LATEST_BLOG',payload:response.data})
+}
