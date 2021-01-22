@@ -21,7 +21,6 @@ export class BlogCategoryAll extends Component {
             this.props.fetchAllBlogsCategory(this.props.match.params.category)
         }
             
-
     }
 
     render() {

@@ -39,19 +39,19 @@ export class Navbar extends Component {
                                 <div className="menu-primary-container navigation_wrapper">
                                     <ul id="jl_top_menu" className="jl_main_menu">
                                     <li className="menu-item current-menu-item current_page_item"> <a href="index-2.html">Home<span className="border-menu" /></a></li>
-                                    <li className="menu-item menu-item-4278"> <a href="#">About Us<span className="border-menu" /></a></li>
-                                    <li className="menu-item menu-item-4279"> <a href="#">special offer<span className="border-menu" /></a></li>
-                                    <li className="menu-item menu-item-4275"> <a href="#">Info!!<span className="border-menu" /></a></li>
+                                    <li className="menu-item menu-item-4278"> <a >About Us<span className="border-menu" /></a></li>
+                                    <li className="menu-item menu-item-4279"> <a >special offer<span className="border-menu" /></a></li>
+                                    <li className="menu-item menu-item-4275"> <a >Info!!<span className="border-menu" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="jl_top_cus_social">
                                     <div className="menu_mobile_share_wrapper">
                                     <span className="jl_hfollow">Share us</span>
                                     <ul className="social_icon_header_top jl_socialcolor">
-                                        <li> <a className="facebook" href="#" target="_blank"><i className="jli-facebook" /></a></li>
-                                        <li> <a className="vk" href="#" target="_blank"><i className="jli-vk" /></a></li>
-                                        <li> <a className="telegram" href="#" target="_blank"><i className="jli-telegram" /></a></li>
-                                        <li> <a className="behance" href="#" target="_blank"><i className="jli-behance" /></a></li>
+                                        <li> <a className="facebook"  target="_blank"><i className="jli-facebook" /></a></li>
+                                        <li> <a className="vk"  target="_blank"><i className="jli-vk" /></a></li>
+                                        <li> <a className="telegram"  target="_blank"><i className="jli-telegram" /></a></li>
+                                        <li> <a className="behance"  target="_blank"><i className="jli-behance" /></a></li>
                                     </ul>
                                     </div>
                                 </div>
@@ -76,17 +76,17 @@ export class Navbar extends Component {
                                     </div>
                                     {/* <div className="search_header_wrapper search_form_menu_personal_click"><i className="jli-search" /></div>
                                     <div className="jl_h_cart nav-cart is-hover">
-                                    <a className="jl_l_cart cart-link" href="#" title="view cart"> <span className="jl_i_cart"><i className="jli-bag" /><em className="cart-counter jl_count_cart">11</em></span></a>
+                                    <a className="jl_l_cart cart-link"  title="view cart"> <span className="jl_i_cart"><i className="jli-bag" /><em className="cart-counter jl_count_cart">11</em></span></a>
                                     <div className="jl-nav-cart jl-hshow">
                                         <div className="jl-cart-wrap woocommerce">
                                         <div className="widget_shopping_cart_content">
                                             <ul className="woocommerce-mini-cart cart_list product_list_widget">
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a href="#" className="remove remove_from_cart_button"> × </a><a href="#"><img width={380} height={380} src="img/herdian-indraputra-6kNVJ1fr3Ug-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />thread</a> <span className="quantity"> 9 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>12.00</bdi></span></span></li>
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a href="#" className="remove remove_from_cart_button" aria-label="Remove this item"> × </a><a href="#"><img width={380} height={380} src="img/irene-kredenets-maO-qIKLqi8-unsplash-1-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />cup</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>35.00</bdi></span></span></li>
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a href="#" className="remove remove_from_cart_button"> × </a><a href="#"><img width={380} height={380} src="img/annie-spratt-fbAnIjhrOL4-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />Flowerpot Plant</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>2.00</bdi></span></span></li>
+                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button"> × </a><a ><img width={380} height={380} src="img/herdian-indraputra-6kNVJ1fr3Ug-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />thread</a> <span className="quantity"> 9 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>12.00</bdi></span></span></li>
+                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button" aria-label="Remove this item"> × </a><a ><img width={380} height={380} src="img/irene-kredenets-maO-qIKLqi8-unsplash-1-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />cup</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>35.00</bdi></span></span></li>
+                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button"> × </a><a ><img width={380} height={380} src="img/annie-spratt-fbAnIjhrOL4-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />Flowerpot Plant</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>2.00</bdi></span></span></li>
                                             </ul>
                                             <p className="woocommerce-mini-cart__total total"> <strong>Subtotal:</strong><span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>145.00</bdi></span></p>
-                                            <p className="woocommerce-mini-cart__buttons buttons"><a href="#" className="button wc-forward">View cart</a><a href="#" className="button checkout wc-forward">Checkout</a></p>
+                                            <p className="woocommerce-mini-cart__buttons buttons"><a  className="button wc-forward">View cart</a><a  className="button checkout wc-forward">Checkout</a></p>
                                         </div>
                                         </div>
                                     </div>
@@ -201,40 +201,40 @@ export class Navbar extends Component {
                                                 <div className="jl_grid_overlay_col">
                                                 <div className="jl_grid_verlay_wrap jl_radus_e">
                                                     <div className="jl_f_img_bg" style={{backgroundImage: 'url("img/pexels-luis-quintero-3731255-scaled-500x350.jpg")'}} />
-                                                    <a href="#" className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} href="#">Inspiration</a></span>
+                                                    <a  className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} >Inspiration</a></span>
                                                     <div className="jl_f_postbox">
-                                                    <h3 className="jl_f_title"> <a href="#">You can make your art with canyon color</a> </h3>
-                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
+                                                    <h3 className="jl_f_title"> <a >You can make your art with canyon color</a> </h3>
+                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
                                                     </div>
                                                 </div>
                                                 </div>
                                                 <div className="jl_grid_overlay_col">
                                                 <div className="jl_grid_verlay_wrap jl_radus_e">
                                                     <div className="jl_f_img_bg" style={{backgroundImage: 'url("img/pexels-matt-hardy-2602545-scaled-500x350.jpg")'}} />
-                                                    <a href="#" className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} href="#">Inspiration</a></span>
+                                                    <a  className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} >Inspiration</a></span>
                                                     <div className="jl_f_postbox">
-                                                    <h3 className="jl_f_title"> <a href="#">A comprehensive guide to the best summer dresses</a> </h3>
-                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
+                                                    <h3 className="jl_f_title"> <a >A comprehensive guide to the best summer dresses</a> </h3>
+                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
                                                     </div>
                                                 </div>
                                                 </div>
                                                 <div className="jl_grid_overlay_col">
                                                 <div className="jl_grid_verlay_wrap jl_radus_e">
                                                     <div className="jl_f_img_bg" style={{backgroundImage: 'url("img/paige-muller-q_iJJGDATYQ-unsplash-500x350.jpg")'}} />
-                                                    <a href="#" className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} href="#">Inspiration</a></span>
+                                                    <a  className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#91bd3a'}} >Inspiration</a></span>
                                                     <div className="jl_f_postbox">
-                                                    <h3 className="jl_f_title"> <a href="#">It feel like win 1 million dollar when code no error</a> </h3>
-                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
+                                                    <h3 className="jl_f_title"> <a >It feel like win 1 million dollar when code no error</a> </h3>
+                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
                                                     </div>
                                                 </div>
                                                 </div>
                                                 <div className="jl_grid_overlay_col">
                                                 <div className="jl_grid_verlay_wrap jl_radus_e">
                                                     <div className="jl_f_img_bg" style={{backgroundImage: 'url("img/taylor-friehl-VwzvLjsiPb4-unsplash-500x360.jpg")'}} />
-                                                    <a href="#" className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#d63447'}} href="#">Health</a></span>
+                                                    <a  className="jl_f_img_link" /> <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#d63447'}} >Health</a></span>
                                                     <div className="jl_f_postbox">
-                                                    <h3 className="jl_f_title"> <a href="#">Creative photography ideas from smart devices</a> </h3>
-                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
+                                                    <h3 className="jl_f_title"> <a >Creative photography ideas from smart devices</a> </h3>
+                                                    <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span><span className="post-read-time"><i className="jli-watch-2" />2 Mins read</span></span>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -270,7 +270,7 @@ export class Navbar extends Component {
                             <li className="menu-item current-menu-item current_page_item"> <Link exact to="/blogs">Blogs<span className="border-menu" /></Link></li>
                                     
                             {/* <li className="menu-item menu-item-has-children">
-                                <a href="#">Features<span className="border-menu" /></a>
+                                <a >Features<span className="border-menu" /></a>
                                 <ul className="sub-menu">
                                 <li className="menu-item menu-item-has-children">
                                     <a href="post-layout-1.html">Post Layout<span className="border-menu" /></a>
@@ -316,28 +316,28 @@ export class Navbar extends Component {
                                 <div className="bt_post_widget">
                                 <div className="jl_m_right jl_sm_list jl_ml jl_clear_at">
                                     <div className="jl_m_right_w">
-                                    <div className="jl_m_right_img jl_radus_e"><a href="#"><img width={120} height={120} src="img/pexels-ichad-windhiagiri-3993407-scaled-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
+                                    <div className="jl_m_right_img jl_radus_e"><a ><img width={120} height={120} src="img/pexels-ichad-windhiagiri-3993407-scaled-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
                                     <div className="jl_m_right_content">
-                                        <h2 className="entry-title"><a href="#" tabIndex={-1}>Best inspire dark photo in the winter season</a></h2>
-                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
+                                        <h2 className="entry-title"><a  tabIndex={-1}>Best inspire dark photo in the winter season</a></h2>
+                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
                                     </div>
                                     </div>
                                 </div>
                                 <div className="jl_m_right jl_sm_list jl_ml jl_clear_at">
                                     <div className="jl_m_right_w">
-                                    <div className="jl_m_right_img jl_radus_e"><a href="#"><img width={120} height={120} src="img/ben-o-sullivan-GNp7ng0lR-8-unsplash-scaled-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
+                                    <div className="jl_m_right_img jl_radus_e"><a ><img width={120} height={120} src="img/ben-o-sullivan-GNp7ng0lR-8-unsplash-scaled-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
                                     <div className="jl_m_right_content">
-                                        <h2 className="entry-title"><a href="#" tabIndex={-1}>Your job will be perfect if you concentrate</a></h2>
-                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
+                                        <h2 className="entry-title"><a  tabIndex={-1}>Your job will be perfect if you concentrate</a></h2>
+                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
                                     </div>
                                     </div>
                                 </div>
                                 <div className="jl_m_right jl_sm_list jl_ml jl_clear_at">
                                     <div className="jl_m_right_w">
-                                    <div className="jl_m_right_img jl_radus_e"><a href="#"><img width={120} height={120} src="img/pexels-unviajesinmaleta-3404200-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
+                                    <div className="jl_m_right_img jl_radus_e"><a ><img width={120} height={120} src="img/pexels-unviajesinmaleta-3404200-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
                                     <div className="jl_m_right_content">
-                                        <h2 className="entry-title"><a href="#" tabIndex={-1}>Enjoy the best time with a special person</a></h2>
-                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
+                                        <h2 className="entry-title"><a  tabIndex={-1}>Enjoy the best time with a special person</a></h2>
+                                        <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a  title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 23, 2016</span></span>
                                     </div>
                                     </div>
                                 </div>
@@ -349,11 +349,11 @@ export class Navbar extends Component {
                                 <div className="jellywp_about_us_widget_wrapper">
                                 <div className="social_icons_widget">
                                     <ul className="social-icons-list-widget icons_about_widget_display">
-                                    <li> <a href="#" className="facebook" target="_blank"><i className="jli-facebook" /></a></li>
-                                    <li> <a href="#" className="behance" target="_blank"><i className="jli-behance" /></a></li>
-                                    <li> <a href="#" className="vimeo" target="_blank"><i className="jli-vimeo" /></a></li>
-                                    <li> <a href="#" className="youtube" target="_blank"><i className="jli-youtube" /></a></li>
-                                    <li> <a href="#" className="instagram" target="_blank"><i className="jli-instagram" /></a></li>
+                                    <li> <a  className="facebook" target="_blank"><i className="jli-facebook" /></a></li>
+                                    <li> <a  className="behance" target="_blank"><i className="jli-behance" /></a></li>
+                                    <li> <a  className="vimeo" target="_blank"><i className="jli-vimeo" /></a></li>
+                                    <li> <a  className="youtube" target="_blank"><i className="jli-youtube" /></a></li>
+                                    <li> <a  className="instagram" target="_blank"><i className="jli-instagram" /></a></li>
                                     </ul>
                                 </div>
                                 </div>
