@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Body from '../includes/Body'
-import {fetchGetNoLatestBlog} from '../actions/index'
 
 export class Home extends Component {
 
+    constructor(props){
+        super(props)
+        this.state={
+            loader:true,
+            data:null
+        }
+    }
+
     componentDidMount(){
-        this.props.fetchGetNoLatestBlog(4);
+        console.log(this.props.homedata);
     }
 
     render() {
@@ -22,6 +29,7 @@ export class Home extends Component {
                                 <div className="col-md-12">
                                 <div className="jl_mright_wrapper jl_clear_at">
                                     <div className="jl_mix_post">
+                                    
                                     <div className="jl_m_center blog-style-one blog-small-grid">
                                         <div className="jl_m_center_w jl_radus_e">
                                         <div className="jl_f_img_bg" style={{backgroundImage: 'url("img/pexels-daria-shevtsova-1071162-scaled-1000x0.jpg")'}} />
@@ -33,6 +41,7 @@ export class Home extends Component {
                                         </div>
                                         </div>
                                     </div>
+
                                     <div className="jl_m_right">
                                         <div className="jl_m_right_w">
                                         <div className="jl_m_right_img jl_radus_e"><a href="#"><img width={120} height={120} src="img/andre-maliik-v5Kd6MSmzoQ-unsplash-scaled-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
@@ -63,16 +72,7 @@ export class Home extends Component {
                                         </div>
                                         </div>
                                     </div>
-                                    <div className="jl_m_right">
-                                        <div className="jl_m_right_w">
-                                        <div className="jl_m_right_img jl_radus_e"><a href="#"><img width={120} height={120} src="img/adam-jaime-dmkmrNptMpw-unsplash-120x120.jpg" className="attachment-sprasa_small_feature size-sprasa_small_feature wp-post-image" alt="" loading="lazy" /></a></div>
-                                        <div className="jl_m_right_content">
-                                            <span className="jl_f_cat"><a className="post-category-color-text" style={{background: '#62ce5c'}} href="#">Sports</a></span>
-                                            <h3 className="entry-title"><a href="#">How Covid-19 made us forget our morals on plastic</a></h3>
-                                            <span className="jl_post_meta"> <span className="jl_author_img_w"><i className="jli-user" /><a href="#" title="Posts by Spraya" rel="author">Spraya</a></span><span className="post-date"><i className="jli-pen" />July 24, 2019</span></span>
-                                        </div>
-                                        </div>
-                                    </div>
+
                                     </div>
                                 </div>
                                 </div>
@@ -481,8 +481,8 @@ export class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    homedata:state.homedatas
 })
 
 
-export default connect(mapStateToProps, {fetchGetNoLatestBlog})(Home)
+export default connect(mapStateToProps)(Home)

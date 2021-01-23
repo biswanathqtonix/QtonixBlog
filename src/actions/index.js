@@ -30,3 +30,10 @@ export const fetchGetNoLatestBlog = no => async dispatch => {
     const response = await API.get(`blog/latest/${no}`);
     dispatch({type:'FETCH_NO_LATEST_BLOG',payload:response.data})
 }
+
+
+// * FETCH HOME PAGE DATA * //
+export const fetchHomePage = no => async dispatch => {
+    const response = await API.get('/blog/homepage');
+    dispatch({type:'FETCH_HOME_DATA',payload:response.data})
+} 

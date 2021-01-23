@@ -2,11 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Navbar from '../includes/Navbar'
 import Footer from '../includes/Footer'
+import {fetchHomePage} from '../actions'
 
 
 export class Body extends Component {
 
-  
+    componentDidMount(){
+        this.props.homepage===null
+        ?
+            this.props.fetchHomePage()
+        :
+            <></>
+    }   
+
+
     handleDarkModChange = (a) =>{
         this.forceUpdate();
         localStorage.setItem('theme', a);
@@ -73,11 +82,7 @@ export class Body extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    homepage:state.homedatas
 })
 
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Body)
+export default connect(mapStateToProps, {fetchHomePage})(Body)
