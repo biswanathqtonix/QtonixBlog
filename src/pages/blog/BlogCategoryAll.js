@@ -15,10 +15,11 @@ export class BlogCategoryAll extends Component {
     }
 
     componentDidUpdate(prevProps){
-
+        
         if(prevProps.match.url !== this.props.match.url){
             this.props.fetchCategoryBlog(this.props.match.params.category)
             this.props.fetchAllBlogsCategory(this.props.match.params.category)
+            window.scrollTo(0, 0);
         }
             
     }

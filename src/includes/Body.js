@@ -8,6 +8,7 @@ import {fetchHomePage} from '../actions'
 export class Body extends Component {
 
     componentDidMount(){
+        window.scrollTo(0, 0);
         this.props.homepage===null
         ?
             this.props.fetchHomePage()

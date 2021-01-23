@@ -44,6 +44,11 @@ export class BlogViewDetails extends Component {
 
     }
 
+
+    componentDidUpdate(){
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <React.Fragment>
