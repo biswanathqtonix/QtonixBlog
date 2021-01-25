@@ -4,7 +4,6 @@ import Moment from 'react-moment';
 import {Link} from 'react-router-dom'
 
 export default function RelatedArticleView(props) {
-    console.log(props.data)
     var blog=props.data;
     return (
         <div className="jl_m_right jl_m_list jl_m_img">

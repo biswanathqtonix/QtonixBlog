@@ -3,6 +3,7 @@ import {combineReducers} from 'redux'
 import menuReducer from './menuReducer'
 import blogReducer from './blogReducer'
 import homeReducer from './homeReducer'
+import pageReducer from './pageReducer'
 
 // const songReducer = () => {
 //     return[
@@ -18,5 +19,6 @@ export default combineReducers({
     // songs:songReducer,
     menu:menuReducer,
     blog:blogReducer,
-    homedatas:homeReducer
+    homedatas:homeReducer,
+    page:pageReducer
 })

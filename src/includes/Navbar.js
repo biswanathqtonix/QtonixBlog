@@ -104,6 +104,73 @@ export class Navbar extends Component {
 
                                     {menus.map((menu)=>{
                                         return(
+                                            menu.children !== undefined && menu.children.length > 0
+                                            ?
+                                            <li key={menu._id} className="menu-item menu-item-has-children">
+                                                <Link exact to={menu.url}>{menu.text}<span className="border-menu" /></Link>
+                                                <ul className="sub-menu">
+                                                    {menu.children.map((menu1)=>{
+                                                        return(
+                                                            menu1.children !== null && menu1.children.length > 0
+                                                            ?
+                                                            <li key={menu1._id} className="menu-item menu-item-has-children">
+                                                                {menu1.type !== 'custom'
+                                                                ?
+                                                                <Link exact to={menu1.url}>{menu1.text}<span className="border-menu" /></Link>
+                                                                :
+                                                                <a href={menu1.url} target="_blank">{menu1.text}<span className="border-menu" /></a>
+                                                                }
+                                                                <ul className="sub-menu">
+
+                                                                {menu1.children.map((menu2)=>{
+                                                                    return(
+                                                                        menu2.children !== null && menu2.children.length > 0 
+                                                                        ?
+                                                                        <></>
+                                                                        :
+                                                                        <li key={menu2._id} className="menu-item">
+                                                                            {menu2.type !== 'custom'
+                                                                            ?
+                                                                            <Link exact to={menu2.url}>{menu2.text}<span className="border-menu" /></Link>
+                                                                            :
+                                                                            <a href={menu2.url} target="_blank">{menu2.text}<span className="border-menu" /></a>
+                                                                            }
+                                                                        </li>
+                                                                    )
+                                                                })}
+                                                                </ul>
+                                                            </li>
+                                                            :
+                                                            <li key={menu1._id} className="menu-item">
+                                                                {menu1.type !== 'custom'
+                                                                ?
+                                                                <Link exact to={menu1.url}>{menu1.text}<span className="border-menu" /></Link>
+                                                                :
+                                                                <a href={menu1.url} target="_blank">{menu1.text}<span className="border-menu" /></a>
+                                                                }
+                                                            </li>
+                                                        )
+                                                    })}
+                                                </ul>
+                                            </li>
+                                            :
+                                            <li  key={menu._id} className="menu-item current-menu-item current_page_item">
+                                                {menu.type !== 'custom'
+                                                ?
+                                                <Link exact to={menu.url}>{menu.text}<span className="border-menu" /></Link>
+                                                :
+                                                <a href={menu.url} target="_blank">{menu.text}<span className="border-menu" /></a>
+                                                }
+                                            </li>
+                                        )
+                                    })}
+
+
+
+
+
+                                    {/* {menus.map((menu)=>{
+                                        return(
 
                                         
                                             menu.children !== null && menu.children.length > 0
@@ -183,7 +250,7 @@ export class Navbar extends Component {
                                             
                                             
                                         )
-                                    })}
+                                    })} */}
 
 
                                     

@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 
 import Home from './pages/Home'
-import AboutUs from './pages/AboutUs'
 import BlogAll from './pages/blog/BlogAll';
 import BlogCategoryAll from './pages/blog/BlogCategoryAll'
 import BlogViewDetails from './pages/blog/BlogViewDetails'
+import DynamicPage from './pages/DynamicPage'
 
 export default function App() {
   return (
@@ -18,13 +18,11 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/aboutus' component={AboutUs} />
           <Route exact path='/blogs' component={BlogAll} />
           <Route exact path='/blogs/:category' component={BlogCategoryAll} />
           <Route exact path='/blogs/:category/:blogurl' component={BlogViewDetails} />
-
-          
-
+          <Route exact path='/:custompage' component={DynamicPage} />
+        
         </Switch>
       </Router>
     </>

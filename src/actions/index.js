@@ -36,4 +36,10 @@ export const fetchGetNoLatestBlog = no => async dispatch => {
 export const fetchHomePage = no => async dispatch => {
     const response = await API.get('/blog/homepage');
     dispatch({type:'FETCH_HOME_DATA',payload:response.data})
-} 
+}
+
+// * FETCH DYNAMIC PAGE DATA * //
+export const fetchDynamicPage = pageurl => async dispatch => {
+    const response = await API.get(`/page/viewpage/${pageurl}`);
+    dispatch({type:'DYNAMIC_PAGE_DATA',payload:response.data.data})
+}

@@ -10,6 +10,9 @@ export default function HomeCatView2(props) {
             <div className="jl_f_img jl_radus_e"><Link exact to={data.url} ><img width={1000} height={650} src={process.env.REACT_APP_BACKENDURL+'/'+data.imagethumb} className="attachment-sprasa_feature_large size-sprasa_feature_large wp-post-image" alt="" loading="lazy" /></Link> </div>
             <div className="jl_mg_content">
                 <h3 className="entry-title"><Link exact to={data.url}>{data.name}</Link></h3>
+                <p><Truncate lines={1} ellipsis={<span>... <Link exact to={data.url}>Read more</Link></span>}>
+                            {data.description}
+                </Truncate></p>
             </div>
             </div>
         </div>
