@@ -9,7 +9,7 @@ import HomeView3 from '../includes/home/HomeView3'
 import HomeCatView1 from '../includes/home/HomeCatView1'
 import HomeCatView2 from '../includes/home/HomeCatView2'
 import HomeCatView3 from '../includes/home/HomeCatView3'
-import HomeView4 from '../includes/home/HomeView4'
+// import HomeView4 from '../includes/home/HomeView4'
 
 
 export class Home extends Component {
@@ -17,13 +17,16 @@ export class Home extends Component {
     render() {
         var getdata = this.props.homedata;
         if(getdata===null){
-            // console.log('null');
         }
-        // console.log(getdata);
+        
 
         return (
             <React.Fragment>
-                <Body>
+                    <Body metadata={{
+                        "metatitle":  getdata===null ? 'Loading...' : getdata.seohome.metatitle,
+                        "metadescription": getdata===null ? 'Loading...' : getdata.seohome.metadescription,
+                        "metakeyword": "No Key Word",
+                    }}>
                                         
                     <div className="mobile_menu_overlay" />
                         <div className="jl_home_bw">

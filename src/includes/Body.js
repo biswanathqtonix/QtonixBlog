@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Navbar from '../includes/Navbar'
 import Footer from '../includes/Footer'
 import {fetchHomePage} from '../actions'
+import { ProgressBar } from 'scrolling-based-progressbar';
+import {Helmet} from "react-helmet";
 
 
 export class Body extends Component {
@@ -20,7 +22,6 @@ export class Body extends Component {
     handleDarkModChange = (a) =>{
         this.forceUpdate();
         localStorage.setItem('theme', a);
-        
     }
 
    
@@ -33,7 +34,16 @@ export class Body extends Component {
         }else{
             var mclass ='options_dark_skin';   
         }
+
+        var metadata = this.props.metadata;
+        
         return (
+            <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{metadata ? metadata.metatitle : 'Blog Website'}</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div id="themetype" className={`options_layout_wrapper jl_clear_at jl_radius jl_none_box_styles jl_border_radiuss jl_en_day_night `+mclass}>
                 {/* <div className="options_layout_wrapper jl_clear_at jl_radius jl_none_box_styles jl_border_radiuss jl_en_day_night options_dark_skin"> */}
                 <div className="options_layout_container full_layout_enable_front">
@@ -69,6 +79,9 @@ export class Body extends Component {
                              </>
                             }
                         </Navbar>
+                        <ProgressBar height="3px" 
+                        ProgressBarStyle={{backgroundColor:'#1976d2'}} />
+
 
                     {/* RENDER CHILD */}
                     {this.props.children}
@@ -78,6 +91,7 @@ export class Body extends Component {
                     <Footer />
                 </div>
             </div>
+            </>
         )
     }
 }

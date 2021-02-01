@@ -12,7 +12,6 @@ export class DynamicPage extends Component {
 
     render() {
         var page = this.props.page;
-        console.log(page)
         return (
             <React.Fragment>
                 <Body>

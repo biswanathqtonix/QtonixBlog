@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 
 export default function HomeCatView3(props) {
     var data = props.data;
-    console.log(data);
     return (
         <div className="jl-grid-cols">
         <div className="p-wraper post-2691">

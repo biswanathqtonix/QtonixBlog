@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {NavLink,Link} from 'react-router-dom'
 import {fetchNavbarMenu} from '../actions'
-import { Switch, Case, Default } from 'react-if';
+// import { Switch, Case, Default } from 'react-if';
 
 
 export class Navbar extends Component {
