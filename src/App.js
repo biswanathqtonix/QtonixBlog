@@ -11,6 +11,7 @@ import BlogAll from './pages/blog/BlogAll';
 import BlogCategoryAll from './pages/blog/BlogCategoryAll'
 import BlogViewDetails from './pages/blog/BlogViewDetails'
 import DynamicPage from './pages/DynamicPage'
+import Login from './pages/Login';
 
 export default function App() {
   return (
@@ -21,7 +22,11 @@ export default function App() {
           <Route exact path='/blogs' component={BlogAll} />
           <Route exact path='/blogs/:category' component={BlogCategoryAll} />
           <Route exact path='/blogs/:category/:blogurl' component={BlogViewDetails} />
+          <Route exact path='/login' component={Login} />
+
+
           <Route exact path='/:custompage' component={DynamicPage} />
+
         
         </Switch>
       </Router>

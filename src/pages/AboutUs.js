@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Navbar from '../includes/Navbar'
+// import Navbar from '../includes/Navbar'
 import Body from '../includes/Body'
 
 
