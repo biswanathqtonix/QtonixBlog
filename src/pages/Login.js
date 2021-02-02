@@ -7,10 +7,11 @@ import { GoogleLoginButton } from "react-social-login-buttons";
 export default function Login() {
     return (
         <Body>
-            <section id="content_main" className="clearfix mb-5">
+            
+            <section id="content_main" className="clearfix mb-5 mt-5">
                 <div className="container">
                     <div className="row main_content">
-                        <div className="container col-md-4">
+                    <div className="container col-md-4" style={{marginTop: '4rem', marginBottom: '6rem'}}>
                             <center>
                                 <h1>Login</h1>
                             </center>

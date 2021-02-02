@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {NavLink,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {fetchNavbarMenu} from '../actions'
 // import { Switch, Case, Default } from 'react-if';
 
@@ -46,12 +46,21 @@ export class Navbar extends Component {
                                 </div>
                                 <div className="jl_top_cus_social">
                                     <div className="menu_mobile_share_wrapper">
-                                    <span className="jl_hfollow">Share us</span>
+                                    {/* <span className="jl_hfollow">Share us</span> */}
                                     <ul className="social_icon_header_top jl_socialcolor">
-                                        <li> <a className="facebook"  target="_blank"><i className="jli-facebook" /></a></li>
+
+                                        <li> <Link  exact to="/login">Login</Link></li>
+                                        <li> <Link exact to="/register">Register</Link></li>
+
+                                        <li> <Link exact to="/myaccount"> <img src="https://lh3.googleusercontent.com/ogw/ADGmqu-raZAj3bhr5cFT9f_4J2k45g3g3aQWlnqEZF4pTg=s32-c-mo" alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
+                                        <li> <Link exact to="/register">Logout</Link></li>
+
+
+
+                                        {/* <li> <a className="facebook"  target="_blank"><i className="jli-facebook" /></a></li>
                                         <li> <a className="vk"  target="_blank"><i className="jli-vk" /></a></li>
                                         <li> <a className="telegram"  target="_blank"><i className="jli-telegram" /></a></li>
-                                        <li> <a className="behance"  target="_blank"><i className="jli-behance" /></a></li>
+                                        <li> <a className="behance"  target="_blank"><i className="jli-behance" /></a></li> */}
                                     </ul>
                                     </div>
                                 </div>
