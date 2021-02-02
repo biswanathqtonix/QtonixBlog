@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import API from '../api/API'
 import Body from '../includes/Body'
 import {Link} from 'react-router-dom'
 import { FacebookLoginButton } from "react-social-login-buttons";
