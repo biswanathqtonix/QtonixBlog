@@ -6,6 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+
 import Home from './pages/Home'
 import BlogAll from './pages/blog/BlogAll';
 import BlogCategoryAll from './pages/blog/BlogCategoryAll'
@@ -21,6 +24,8 @@ import MyAccount from './pages/myaccount/MyAccount';
 export default function App() {
   return (
     <>
+      <ReactNotification />
+
       <Router>
         <Switch>
           <Route exact path='/' component={Home} />

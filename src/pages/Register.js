@@ -4,24 +4,45 @@ import Body from '../includes/Body'
 import {Link} from 'react-router-dom'
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
-import { OldSocialLogin as SocialLogin } from 'react-social-login'
+// import { OldSocialLogin as SocialLogin } from 'react-social-login'
 import SocialButton from '../includes/SocialButton'
+import { store } from 'react-notifications-component';
 
 
 export default class Register extends Component {
 
     handleSocialLogin = (user) => {
-        console.log(user);
+        // console.log(user._profile);
+
+        API.post('/user/socialloginregister',user._profile)
+        .then(response=>{
+            console.log(response.data)
+        })
+
     }
 
     handleSocialLoginFailure = (err) => {
         console.error(err)
-      }
+    }
       
 
     handleSubmit = e => {
         e.preventDefault();
-        alert(123);
+        // alert(123);
+
+        store.addNotification({
+            title: "Wonderful!",
+            message: "teodosii@react-notifications-component",
+            type: "success",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          })
     }
 
     render() {
@@ -63,7 +84,7 @@ export default class Register extends Component {
                             
                             <SocialButton
                                 provider='facebook'
-                                appId='1849749451833313'
+                                appId='471487504238960'
                                 onLoginSuccess={this.handleSocialLogin}
                                 onLoginFailure={this.handleSocialLoginFailure}
                                 key={'facebook'}
