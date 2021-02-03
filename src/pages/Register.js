@@ -4,12 +4,30 @@ import Body from '../includes/Body'
 import {Link} from 'react-router-dom'
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
-// import { OldSocialLogin as SocialLogin } from 'react-social-login'
+import cookie from 'react-cookies'
 import SocialButton from '../includes/SocialButton'
 import { store } from 'react-notifications-component';
+import SimpleReactValidator from 'simple-react-validator';
 
 
 export default class Register extends Component {
+
+    constructor(props){
+        super(props)
+        this.state={
+            name:'',
+            email:'',
+            password:'',
+        }
+        this.validator = new SimpleReactValidator();
+        this.handleTextChange=this.handleTextChange.bind(this);
+    }
+
+    handleTextChange(e){
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
 
     handleSocialLogin = (user) => {
         // console.log(user._profile);
@@ -17,6 +35,55 @@ export default class Register extends Component {
         API.post('/user/socialloginregister',user._profile)
         .then(response=>{
             console.log(response.data)
+
+            var responsedata = response.data;
+
+            if(responsedata.message === 'Login Success'){
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Login Success',
+                    type: 'success',                     
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],    
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+
+                cookie.remove('qbuserdata', { path: '/' })
+                cookie.remove('qbuserlogin', { path: '/' })
+    
+                var expires = new Date();
+                expires.setSeconds(21600);
+                cookie.save('qbuserdata', response.data, { path: '/',expires });
+                cookie.save('qbuserlogin','true', { path: '/',expires })
+
+                this.props.history.push('/myaccount');
+            }
+
+            if(responsedata.message === 'Registration Success'){
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Registration Success',
+                    type: 'success',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+                cookie.remove('qbuserdata', { path: '/' })
+                cookie.remove('qbuserlogin', { path: '/' })
+    
+                var expires = new Date();
+                expires.setSeconds(21600);
+                cookie.save('qbuserdata', response.data, { path: '/',expires });
+                cookie.save('qbuserlogin','true', { path: '/',expires })
+
+                this.props.history.push('/myaccount');
+            }
         })
 
     }
@@ -28,21 +95,30 @@ export default class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        // alert(123);
+        
+        
+        if (this.validator.allValid()) {
+            alert('You submitted the form and stuff!');
+            
+            API.post('/user/userregister',this.state)
+            .then(response=>{
+        
+            console.log(response.data);
 
-        store.addNotification({
-            title: "Wonderful!",
-            message: "teodosii@react-notifications-component",
-            type: "success",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 5000,
-              onScreen: true
-            }
-          })
+            this.props.history.push('/myaccount');
+
+            })
+
+
+        } else {
+            this.validator.showMessages();
+            this.forceUpdate();
+
+            
+        }
+
+
+        
     }
 
     render() {
@@ -60,13 +136,18 @@ export default class Register extends Component {
                                 
                                 <div className="form-fields row">
                                     <span className="comment-form-author col-md-12 mt-3">
-                                        <input name="name" type="text"  size={30} placeholder="Your Name" />
+                                        <input name="name" type="text" placeholder="Your Name" value={this.state.name} onChange={this.handleTextChange} />
+                                        <p className="text-danger mdtext">{this.validator.message('name', this.state.name, 'required')}</p>
                                     </span>
                                     <span className="comment-form-author col-md-12 mt-3">
-                                        <input name="email" type="text"  size={30} placeholder="Your Email" />
+                                        <input name="email" type="email" placeholder="Your Email" value={this.state.email} onChange={this.handleTextChange} />
+                                        <p className="text-danger mdtext">{this.validator.message('email', this.state.email, 'required')}</p>
+
                                     </span>
                                     <span className="comment-form-email col-md-12 mt-3">
-                                        <input name="password" type="text"  size={30} placeholder="Your Password" />
+                                        <input name="password" type="password" placeholder="Your Password" value={this.state.password} onChange={this.handleTextChange} />
+                                        <p className="text-danger mdtext">{this.validator.message('password', this.state.password, 'required')}</p>
+
                                     </span>
                                 </div>
                                 <p className="form-submit">

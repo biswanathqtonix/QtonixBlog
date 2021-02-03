@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import {ProtectedRouteUser} from './auth/auth'
 
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -16,9 +17,11 @@ import BlogViewDetails from './pages/blog/BlogViewDetails'
 import DynamicPage from './pages/DynamicPage'
 import Login from './pages/Login';
 import Register from './pages/Register'
+import EmailVerify from './pages/EmailVerify'
 
 import Forgotpassword from './pages/Forgotpassword';
 import MyAccount from './pages/myaccount/MyAccount';
+
 
 
 export default function App() {
@@ -35,16 +38,12 @@ export default function App() {
           <Route exact path='/login' component={Login} />
          
           <Route exact path='/register' component={Register} />
+          <Route exact path='/emailverify' component={EmailVerify} />
 
           <Route exact path='/forgotpassword' component={Forgotpassword} />
 
 
-          <Route exact path='/myaccount' component={MyAccount} />
-
-
-
-
-
+          <ProtectedRouteUser exact path='/myaccount' component={MyAccount} />
 
 
           <Route exact path='/:custompage' component={DynamicPage} />

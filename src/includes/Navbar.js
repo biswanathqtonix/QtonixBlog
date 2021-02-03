@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchNavbarMenu} from '../actions'
+import cookie from 'react-cookies'
+
 // import { Switch, Case, Default } from 'react-if';
 
 
@@ -23,12 +25,11 @@ export class Navbar extends Component {
 
 
     render() {
-
         var menus = this.props.menus;
+        const user = cookie.load('userdatass');
+        console.log(user);
         if(menus){
-
         }
-
         return (
             <>
                <header className="header-wraper jl_header_magazine_style two_header_top_style header_layout_style3_custom jl_cus_top_share">
@@ -56,11 +57,6 @@ export class Navbar extends Component {
                                         <li> <Link exact to="/register">Logout</Link></li>
 
 
-
-                                        {/* <li> <a className="facebook"  target="_blank"><i className="jli-facebook" /></a></li>
-                                        <li> <a className="vk"  target="_blank"><i className="jli-vk" /></a></li>
-                                        <li> <a className="telegram"  target="_blank"><i className="jli-telegram" /></a></li>
-                                        <li> <a className="behance"  target="_blank"><i className="jli-behance" /></a></li> */}
                                     </ul>
                                     </div>
                                 </div>
