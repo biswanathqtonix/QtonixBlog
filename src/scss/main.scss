@@ -14,3 +14,36 @@
     margin-bottom: -3px;
     margin-left: 5px;
 }
+
+
+.ucomment{
+    &_img{
+        width: 50px;
+    }
+    &_head{
+        text-transform: none !important;
+
+        position: absolute;
+        margin-top: 6px;
+        
+        &_time{
+            font-size: 12px;
+    font-weight: 100;
+        }
+    }
+
+    &_headsub{
+        text-transform: none !important;
+        font-size: 13px;
+        font-weight: 300;
+        position: absolute;
+        margin-top: -23px;
+        margin-left: 60px;
+    }
+    
+    &_para{
+        text-transform: none !important;
+        margin-top: -23px;
+        padding: 0px 17px;
+    }
+}

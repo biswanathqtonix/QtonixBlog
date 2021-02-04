@@ -6,6 +6,9 @@ import API from '../../api/API'
 import Loader from 'react-loader-spinner'
 import Moment from 'react-moment';
 import RelatedArticleView from '../../includes/blog/RelatedArticleView'
+import { FacebookLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton } from "react-social-login-buttons";
+import cookie from 'react-cookies'
 
 
 export class BlogViewDetails extends Component {
@@ -83,6 +86,10 @@ export class BlogViewDetails extends Component {
     // }
 
     render() {
+
+        //GET LOGIN LOGOUT USER DATA
+        const user = cookie.load('qbuserdata');
+
         return (
             <React.Fragment>
                 <Body>
@@ -144,14 +151,66 @@ export class BlogViewDetails extends Component {
                                                     </div>
                                                     </div>
                                                     <div id="respond" className="comment-respond">
-                                                    <h3 id="reply-title" className="comment-reply-title">Leave a Reply</h3>
-                                                    <form action="http://jellywp.com/html/sprasa-preview/post-layout-1.html" method="post" id="commentform" className="comment-form">
-                                                        <p className="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span className="required">*</span></p>
-                                                        <p className="comment-form-comment"><textarea className="u-full-width" id="comment" name="comment" cols={45} rows={8} aria-required="true" placeholder="Comment" defaultValue={""} /></p>
-                                                        <div className="form-fields row"><span className="comment-form-author col-md-4"><input id="author" name="author" type="text" defaultValue size={30} placeholder="Fullname" /></span><span className="comment-form-email col-md-4"><input id="email" name="email" type="text" defaultValue size={30} placeholder="Email Address" /></span><span className="comment-form-url col-md-4"><input id="url" name="url" type="text" defaultValue size={30} placeholder="Web URL" /></span></div>
-                                                        <p className="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" defaultValue="yes" /><label htmlFor="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-                                                        <p className="form-submit"><input name="submit" type="submit" id="submit" className="submit" defaultValue="Post Comment" /><input type="hidden" name="comment_post_ID" id="comment_post_ID" /></p>
-                                                    </form>
+
+                                                    <div className="row">
+
+                                                    <div className="col-md-12 mt-3">
+                                                       <h6>
+                                                        <img className="ucomment_img" src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" alt="" />
+                                                        <span className="ml-2 ucomment_head">John Doe <span className="ucomment_head_time">(2 days ago)</span> </span> <br/> <span className="ucomment_headsub">johndoe@gmail.com</span> </h6> 
+                                                        <p className="ucomment_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eos neque voluptatibus numquam velit. Laudantium, et iure, eum, deleniti rerum soluta quaerat vitae repellat facilis sequi doloribus. Voluptatum, exercitationem recusandae.</p>
+                                                    </div>
+                                                    
+
+
+                                                    {user===undefined
+                                                    ?
+                                                    <div className="col-md-12 mt-5">
+                                                        <h5>You must be <span className="text-primary">logged in</span> to post a comment</h5>
+
+                                                        <div className="row no-gutters">
+                                                            <div className="col-md-6">
+                                                                <GoogleLoginButton className="" onClick={() => alert("Hello")} />
+                                                            </div>
+                                                            <div className="col-md-6">
+                                                                <FacebookLoginButton className="" onClick={() => alert("Hello")} />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    :
+                                                    <div className="col-md-12 mt-2">
+                                                        <h3 id="reply-title" className="comment-reply-title">Leave a Reply</h3>
+                                                        <form action="http://jellywp.com/html/sprasa-preview/post-layout-1.html" method="post" id="commentform" className="comment-form">
+                                                            {/* <p className="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span className="required">*</span></p> */}
+                                                            <p className="comment-form-comment">
+                                                                <textarea className="u-full-width" id="comment" name="comment" cols={45} rows={8} aria-required="true" placeholder="Comment" defaultValue={""} />
+                                                            </p>
+                                                            <div className="form-fields row">
+                                                                <span className="comment-form-author col-md-4">
+                                                                    <input id="author" name="author" type="text" placeholder="Fullname" /></span>
+                                                                <span className="comment-form-email col-md-4">
+                                                                    <input id="email" name="email" type="text" placeholder="Email Address" /></span>
+                                                                <span className="comment-form-url col-md-4">
+                                                                    <input id="url" name="url" type="text" placeholder="Web URL" /></span>
+                                                            </div>
+                                                            {/* <p className="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" defaultValue="yes" /><label htmlFor="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p> */}
+                                                            <p className="form-submit"><input name="submit" type="submit" id="submit" className="submit" defaultValue="Post Comment" /><input type="hidden" name="comment_post_ID" id="comment_post_ID" /></p>
+                                                        </form>
+                                                    </div>
+                                                    }
+                                                    
+
+                                                    
+
+
+                                                    
+
+
+                                                    </div>
+
+
+
+                                                    
                                                     </div>
                                                 </div>
                                             </div>

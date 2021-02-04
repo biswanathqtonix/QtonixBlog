@@ -30,11 +30,11 @@ export default class Register extends Component {
     }
 
     handleSocialLogin = (user) => {
-        // console.log(user._profile);
+        
 
         API.post('/user/socialloginregister',user._profile)
         .then(response=>{
-            console.log(response.data)
+       
 
             var responsedata = response.data;
 

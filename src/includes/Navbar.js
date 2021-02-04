@@ -67,7 +67,7 @@ export class Navbar extends Component {
                                             </React.Fragment>
                                         :
                                             <React.Fragment>
-                                            <li> <Link exact to="/myaccount"> <img src={user.data.imagethumb} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
+                                            <li> <Link exact to="/myaccount"> <img src={user.data[0].imagemedium} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
                                             <li> <Link exact to="/register" onClick={this.handleLogout}>Logout</Link></li>
                                             </React.Fragment>
                                         }
