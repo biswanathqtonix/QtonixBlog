@@ -6,10 +6,7 @@ import API from '../../api/API'
 import Loader from 'react-loader-spinner'
 import Moment from 'react-moment';
 import RelatedArticleView from '../../includes/blog/RelatedArticleView'
-import {
-    FacebookShareButton,FacebookIcon,EmailShareButton,EmailIcon,InstapaperShareButton,InstapaperIcon,LinkedinShareButton,LinkedinIcon,PinterestShareButton,PinterestIcon,TwitterShareButton,TwitterIcon,WhatsappIcon,WhatsappShareButton
-  } from "react-share";
-  import Disqus from "disqus-react";
+
 
 export class BlogViewDetails extends Component {
 
@@ -86,12 +83,6 @@ export class BlogViewDetails extends Component {
     // }
 
     render() {
-        const disqusShortname = "your-site-shortname"
-    const disqusConfig = {
-      url: "http://localhost:3000",
-      identifier: "6548",
-      title: "Title of Your Article"
-    }
         return (
             <React.Fragment>
                 <Body>
@@ -162,17 +153,8 @@ export class BlogViewDetails extends Component {
                                                         <p className="form-submit"><input name="submit" type="submit" id="submit" className="submit" defaultValue="Post Comment" /><input type="hidden" name="comment_post_ID" id="comment_post_ID" /></p>
                                                     </form>
                                                     </div>
-                                                    <br/><br/><br/>
-
-
-                                                    <Disqus.DiscussionEmbed
-          shortname={disqusShortname}
-          config={disqusConfig}
-        />
-
                                                 </div>
                                             </div>
-                                            
                                             :
 
                                             <h1 className="text-center mt-5 mb-5">Not Found</h1>
