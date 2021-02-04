@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchNavbarMenu} from '../actions'
 import cookie from 'react-cookies'
-
-// import { Switch, Case, Default } from 'react-if';
+import { withRouter } from "react-router-dom";
 
 
 export class Navbar extends Component {
@@ -20,14 +19,24 @@ export class Navbar extends Component {
         document.body.appendChild(script);
     }
 
+    handleLogout = e => {
+        e.preventDefault();
+        cookie.remove('qbuserdata', { path: '/' })
+        cookie.remove('qbuserlogin', { path: '/' })
+        this.props.history.push('/login');
+    }
+
 
     
 
 
     render() {
         var menus = this.props.menus;
-        const user = cookie.load('userdatass');
-        console.log(user);
+
+        //GET LOGIN LOGOUT USER DATA
+        const user = cookie.load('qbuserdata');
+
+        //****DONT DELETE THIS OTHERWISE LOGIN THROUGH SOCIAL MEDIA WILL NOT WORK AND WIL SHOW SDK ERROR****
         if(menus){
         }
         return (
@@ -50,12 +59,18 @@ export class Navbar extends Component {
                                     {/* <span className="jl_hfollow">Share us</span> */}
                                     <ul className="social_icon_header_top jl_socialcolor">
 
-                                        <li> <Link  exact to="/login">Login</Link></li>
-                                        <li> <Link exact to="/register">Register</Link></li>
-
-                                        <li> <Link exact to="/myaccount"> <img src="https://lh3.googleusercontent.com/ogw/ADGmqu-raZAj3bhr5cFT9f_4J2k45g3g3aQWlnqEZF4pTg=s32-c-mo" alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
-                                        <li> <Link exact to="/register">Logout</Link></li>
-
+                                        {user===undefined
+                                        ?
+                                            <React.Fragment>
+                                            <li> <Link  exact to="/login">Login</Link></li>
+                                            <li> <Link exact to="/register">Register</Link></li>
+                                            </React.Fragment>
+                                        :
+                                            <React.Fragment>
+                                            <li> <Link exact to="/myaccount"> <img src={user.data.imagethumb} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
+                                            <li> <Link exact to="/register" onClick={this.handleLogout}>Logout</Link></li>
+                                            </React.Fragment>
+                                        }
 
                                     </ul>
                                     </div>
@@ -447,5 +462,6 @@ const mapStateToProps = (state) => ({
     menus:state.menu
 })
 
+const NavbarWithRouter = withRouter(Navbar);
 
-export default connect(mapStateToProps, {fetchNavbarMenu})(Navbar)
+export default connect(mapStateToProps, {fetchNavbarMenu})(NavbarWithRouter)
