@@ -21,6 +21,9 @@ import EmailVerify from './pages/EmailVerify'
 
 import Forgotpassword from './pages/Forgotpassword';
 import MyAccount from './pages/myaccount/MyAccount';
+import MyAccountEdit from './pages/myaccount/MyAccountEdit';
+
+
 
 
 
@@ -44,6 +47,10 @@ export default function App() {
 
 
           <ProtectedRouteUser exact path='/myaccount' component={MyAccount} />
+          <ProtectedRouteUser exact path='/myaccount/edit' component={MyAccountEdit} />
+
+
+          
 
 
           <Route exact path='/:custompage' component={DynamicPage} />
