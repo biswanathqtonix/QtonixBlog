@@ -6,17 +6,20 @@ export const fetchNavbarMenu = () => async dispatch => {
     dispatch({type:'FETCH_NAV_MENUS',payload:response.data.data.menu})
 }
 
+
 // * FETCH ALL BLOGS * //
 export const fetchAllBlogs = () => async dispatch => {
     const response = await API.get('blog');
     dispatch({type:'FETCH_ALL_BLOGS',payload:response.data})
 }
 
+
 // * FETCH ALL BLOGS CATEGORYS LIST * //
 export const fetchAllBlogsCategory = category => async dispatch => {
     const response = await API.get(`blog/category/${category}`);
     dispatch({type:'FETCH_ALL_BLOGS_CATEGORY',payload:response.data})
 }
+
 
 // * FETCH CATEGORY BLOG * //
 export const fetchCategoryBlog = category => async dispatch => {
@@ -38,8 +41,15 @@ export const fetchHomePage = no => async dispatch => {
     dispatch({type:'FETCH_HOME_DATA',payload:response.data})
 }
 
+
 // * FETCH DYNAMIC PAGE DATA * //
 export const fetchDynamicPage = pageurl => async dispatch => {
     const response = await API.get(`/page/viewpage/${pageurl}`);
     dispatch({type:'DYNAMIC_PAGE_DATA',payload:response.data.data})
+}
+
+
+// * GET USER DETAILS * //
+export const storeUserDetails = data => async dispatch => {
+    dispatch({type:'USER_DETAILS',payload:data})
 }

@@ -7,8 +7,7 @@ import Sidebar from './Sidebar'
 
 export class MyAccount extends Component {
     render() {
-        //GET LOGIN LOGOUT USER DATA
-        const user = cookie.load('qbuserdata');
+        const user = this.props.user;
 
         return (
             <Body>
@@ -27,14 +26,14 @@ export class MyAccount extends Component {
                             <div className="col-md-9 mt-4">
                             <div className="card">
                                 <div className="card-body">
-                                    <img width="70px" src={user.data[0].imagemedium} alt=""/>
+                                    <img width="70px" src={user.imagemedium} alt=""/>
                                     <div className="dbox1 mt-4">
-                                        <p>Name: {user.data[0].name}</p>
-                                        <p>Email: {user.data[0].email}</p>
-                                        <p>Contact: {user.data[0].contact}</p>
-                                        <p>City: {user.data[0].city}</p>
-                                        <p>State: {user.data[0].state}</p>
-                                        <p>Country: {user.data[0].country}</p>
+                                        <p>Name: {user.name}</p>
+                                        <p>Email: {user.email}</p>
+                                        <p>Contact: {user.contact}</p>
+                                        <p>City: {user.city}</p>
+                                        <p>State: {user.state}</p>
+                                        <p>Country: {user.country}</p>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +51,7 @@ export class MyAccount extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    user:state.userdetails
 })
 
 const mapDispatchToProps = {

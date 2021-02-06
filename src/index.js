@@ -18,6 +18,7 @@ const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: hardSet,
+  whitelist: ['blog','menu','homedatas','page','userdetails']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

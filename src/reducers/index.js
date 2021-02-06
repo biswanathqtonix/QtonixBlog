@@ -4,6 +4,7 @@ import menuReducer from './menuReducer'
 import blogReducer from './blogReducer'
 import homeReducer from './homeReducer'
 import pageReducer from './pageReducer'
+import userReducer from './userReducer'
 
 // const songReducer = () => {
 //     return[
@@ -20,5 +21,6 @@ export default combineReducers({
     menu:menuReducer,
     blog:blogReducer,
     homedatas:homeReducer,
-    page:pageReducer
+    page:pageReducer,
+    userdetails:userReducer
 })

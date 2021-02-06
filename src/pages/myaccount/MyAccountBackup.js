@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Body from '../../includes/Body'
+import cookie from 'react-cookies'
 import Sidebar from './Sidebar'
 import API from '../../api/API'
-import {storeUserDetails} from '../../actions'
-
 
 export class MyAccountEdit extends Component {
 
@@ -15,12 +14,10 @@ export class MyAccountEdit extends Component {
             name:'',
             email:'',
             contact:'',
-            password:'',
+            // password:'',
             city:'',
             state:'',
             country:'',
-            usertype:'',
-            email_verify:'',
             image:null
         }
         this.handleChange=this.handleChange.bind(this);
@@ -29,19 +26,17 @@ export class MyAccountEdit extends Component {
 
 
     componentDidMount(){
-        const user = this.props.user;
-
+        const user = JSON.parse(localStorage.getItem('qbuserdata'));
+        // console.log(user);
         this.setState({
-            id:user._id,
-            name:user.name,
-            email:user.email,
-            contact:user.contact,
-            password:user.password,
-            city:user.city,
-            state:user.state,
-            country:user.country,
-            usertype:user.usertype,
-            email_verify:user.email_verify,
+            id:user.data._id,
+            // name:user.data[0].name,
+            // email:user.data[0].email,
+            // contact:user.data[0].contact,
+            // password:user.data[0].password,
+            // city:user.data[0].city,
+            // state:user.data[0].state,
+            // country:user.data[0].country,
         })
     }
 
@@ -62,9 +57,6 @@ export class MyAccountEdit extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        var props = this.props;
-
-
         var data = new FormData();
         data.append('id',this.state.id);
         data.append('name',this.state.name);
@@ -74,21 +66,15 @@ export class MyAccountEdit extends Component {
         data.append('state',this.state.state);
         data.append('country',this.state.country);
         data.append('image',this.state.image);
-        data.append('usertype',this.state.usertype);
-        data.append('email_verify',this.state.email_verify);
-
 
 
         var headers = {
             'Content-Type':'multipart/form-data'
         }
 
-        API.put(`/user/userupdate/${this.state.id}`,data,headers)
+        API.put(`/user/${this.state.id}`,data,headers)
         .then(response=>{
             console.log(response.data)
-
-            //STORE IN REDUX STATE
-            props.storeUserDetails(response.data.data);
           
 
             localStorage.removeItem('qbuserdata');
@@ -101,8 +87,8 @@ export class MyAccountEdit extends Component {
 
     render() {
         //GET LOGIN LOGOUT USER DATA
-        const user = this.state;
         // const user = JSON.parse(localStorage.getItem('qbuserdata'));
+        const user = JSON.parse(localStorage.getItem('qbuserdata'));
        
         return (
             <Body>
@@ -127,25 +113,31 @@ export class MyAccountEdit extends Component {
                                 
                                         <div className="form-fields row">
                                             <span className="comment-form-author col-md-12">
-                                                <input name="email" type="email" placeholder="Your Email" value={user.email} readOnly />
+                                                <input name="email" type="email" placeholder="Your Email" defaultValue={user.data.email} readOnly />
+                                                
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="name" type="text" placeholder="Your Name" value={user.name} onChange={this.handleChange} />
+                                                <input name="name" type="text" placeholder="Your Name" defaultValue={user.data.name} onChange={this.handleChange} />
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="password" type="text" placeholder="Your Password" value={user.password} onChange={this.handleChange} />
+                                                <input name="password" type="text" placeholder="Your Password" defaultValue={user.data.password} onChange={this.handleChange} />
+                                                
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="contact" type="text" placeholder="Your Contact" value={user.contact} onChange={this.handleChange}  />
+                                                <input name="contact" type="text" placeholder="Your Contact" defaultValue={user.data.contact} onChange={this.handleChange}  />
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="city" type="text" placeholder="Your City" value={user.city} onChange={this.handleChange}  />
+                                                <input name="city" type="text" placeholder="Your City" defaultValue={user.data.city} onChange={this.handleChange}  />
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="state" type="text" placeholder="Your State" value={user.state} onChange={this.handleChange}  />
+                                                <input name="state" type="text" placeholder="Your State" defaultValue={user.data.state} onChange={this.handleChange}  />
                                             </span>
                                             <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="country" type="text" placeholder="Your Country" value={user.country} onChange={this.handleChange}  />
+                                                <input name="country" type="text" placeholder="Your Country" defaultValue={user.data.country} onChange={this.handleChange}  />
+                                            </span>
+
+                                            <span className="comment-form-email col-md-12 mt-3">
+                                                <input name="" type="file" onChange={this.handleImageChange} />
                                             </span>
                                         </div>
                                         <p className="form-submit">
@@ -169,7 +161,11 @@ export class MyAccountEdit extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user:state.userdetails
+    
 })
 
-export default connect(mapStateToProps, {storeUserDetails})(MyAccountEdit)
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyAccountEdit)

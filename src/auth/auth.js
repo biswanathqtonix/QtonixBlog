@@ -12,15 +12,15 @@ export const ProtectedRouteUser = ({
       {...rest}
       render={props => {
 
-        // const logindata = localStorage.getItem('userlogin') === 'true'
-        const logindata = cookie.load('qbuserlogin') === 'true';
+        const logindata = localStorage.getItem('qbuserlogin') === 'true'
+        // const logindata = cookie.load('qbuserlogin') === 'true';
   
       
         if (logindata) {
 
           //Check Email Verify
-          // var data = JSON.parse(localStorage.getItem('userdata'));
-          var data=cookie.load('qbuserdata');
+          var data = JSON.parse(localStorage.getItem('qbuserdata'));
+          // var data=cookie.load('qbuserdata');
 
 
           if(data.email_verify=='Not Verified'){
