@@ -4,6 +4,8 @@ import Body from '../../includes/Body'
 import Sidebar from './Sidebar'
 import API from '../../api/API'
 import {storeUserDetails} from '../../actions'
+import { store } from 'react-notifications-component';
+
 
 
 export class MyAccountEdit extends Component {
@@ -18,6 +20,7 @@ export class MyAccountEdit extends Component {
             city:'',
             state:'',
             country:'',
+            image:null
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleImageChange=this.handleImageChange.bind(this);
@@ -47,9 +50,61 @@ export class MyAccountEdit extends Component {
 
 
     handleImageChange(e){
+        
         this.setState({
-            image:e.target.files
+            image: e.target.files[0]
         })
+
+    }
+
+    handleImageSubmit = e => {
+        e.preventDefault();
+
+        var props = this.props;
+        var id = localStorage.getItem('qbuserid');
+
+        var formData = new FormData();
+        formData.append('image',this.state.image);
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+
+        API.put(`/user/userimageupdate/${id}`,formData,config)
+        .then(response=>{
+
+            if(response.data.response==='true'){
+
+                props.storeUserDetails(response.data.data);
+
+                localStorage.removeItem('qbuserimage');
+                localStorage.setItem('qbuserimage',response.data.data.imagethumb);
+
+
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Successfully Updated.',
+                    type: 'success',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+
+        
+                this.props.history.push('/myaccount');
+
+            }else{
+                alert('Failed Please try again.')
+            }
+            
+            
+        })
+
     }
 
 
@@ -62,14 +117,29 @@ export class MyAccountEdit extends Component {
 
         API.put(`/user/userupdate/${id}`,this.state)
         .then(response=>{
-            console.log(response.data)
+            if(response.data.response==='true'){
 
-            props.storeUserDetails(response.data.data);
-          
-            localStorage.removeItem('qbuserdata');
-            localStorage.setItem('qbuserdata',JSON.stringify(response.data));
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Successfully Updated.',
+                    type: 'success',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
 
-            this.props.history.push('/myaccount');
+                props.storeUserDetails(response.data.data);
+                this.props.history.push('/myaccount');
+
+
+            }else{
+                alert('Failed please try again')
+            }
+
+            
         })
 
     }
@@ -138,10 +208,10 @@ export class MyAccountEdit extends Component {
                                 <div className="col-md-6 mt-3">
                                    
                                     <h5>Change Profile Image</h5>    
-                                    <form action="">
+                                    <form action="" onSubmit={this.handleImageSubmit}>
                                         <span className="comment-form-author mt-3">
                                             
-                                             <input name="country" type="file" onChange={this.handleChange}  />
+                                             <input name="country" type="file" onChange={this.handleImageChange}  />
                                         </span>
                                         <p className="form-submit">
                                             <input name="submit" type="submit" id="submit" className="submit btn-block" value="Update"/>

@@ -84,8 +84,16 @@ export class Navbar extends Component {
                                             </React.Fragment>
                                         :
                                             <React.Fragment>
-                                            <li> <Link exact to="/myaccount"> <img src={user.imagethumb} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
-                                            {/* <li> <Link exact to="/myaccount">My Account</Link></li> */}
+                                            <li> <Link exact to="/myaccount"> 
+
+                                            {user.imagethumb === undefined
+                                            ?
+                                            <img src='https://www.centrik.in/wp-content/uploads/2017/02/user-image-.png' alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> 
+                                            :
+                                            <img src={user.imagethumb} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> 
+                                            }
+                                            
+                                             <span className="ml-1">My Account</span></Link></li>
                                             
                                             <li> <Link exact to="/register" onClick={this.handleLogout}>Logout</Link></li>
                                             </React.Fragment>

@@ -24,7 +24,7 @@ export const ProtectedRouteUser = ({
           // var data=cookie.load('qbuserdata');
 
 
-          if(localStorage.getItem('qbuseremailverify') ==='Not Verified'){
+          if(localStorage.getItem('qbuseremailverify') !=='Verified'){
             return <Redirect to="/emailverify" />
           }else{
             return <Component {...props} />;

@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import API from '../api/API'
 import Body from '../includes/Body'
-import {Link} from 'react-router-dom'
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
-import cookie from 'react-cookies'
 import SocialButton from '../includes/SocialButton'
 import { store } from 'react-notifications-component';
 import SimpleReactValidator from 'simple-react-validator';
@@ -127,20 +125,32 @@ export class Register extends Component {
     handleSubmit = e => {
         e.preventDefault();
         
-        
+    
         if (this.validator.allValid()) {
-            alert('You submitted the form and stuff!');
-            
+           
             API.post('/user/userregister',this.state)
             .then(response=>{
-        
-            console.log(response.data);
 
-            this.props.history.push('/myaccount');
+                if(response.data.response === true){
+
+                    store.addNotification({
+                        title: 'Success',
+                        message: 'Registration success.',
+                        type: 'success',                         
+                        container: 'top-right',                
+                        animationIn: ["animated", "fadeIn"],     
+                        animationOut: ["animated", "fadeOut"],   
+                        dismiss: {
+                        duration: 3000
+                        }
+                    })
+                    this.props.history.push('/myaccount');
+
+                }else{
+                    alert('Failed please try again')
+                }
 
             })
-
-
         } else {
             this.validator.showMessages();
             this.forceUpdate();

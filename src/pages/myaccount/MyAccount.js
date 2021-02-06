@@ -26,7 +26,7 @@ export class MyAccount extends Component {
                             <div className="col-md-9 mt-4">
                             <div className="card">
                                 <div className="card-body">
-                                    <img width="70px" src={user.imagemedium} alt=""/>
+                                    <img width="70px" src={user.imagethumb} alt=""/>
                                     <div className="dbox1 mt-4">
                                         <p>Name: {user.name}</p>
                                         <p>Email: {user.email}</p>
