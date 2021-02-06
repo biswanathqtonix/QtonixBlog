@@ -40,7 +40,7 @@ export class Register extends Component {
 
             var responsedata = response.data;
 
-            // console.log(responsedata)
+            console.log(responsedata.data)
 
             if(responsedata.message === 'Login Success'){
                 store.addNotification({
@@ -57,10 +57,21 @@ export class Register extends Component {
 
                 localStorage.removeItem('qbuserdata');
                 localStorage.removeItem('qbuserlogin');
+                localStorage.removeItem('qbuserid');
+                localStorage.removeItem('qbuseremail');
+                localStorage.removeItem('qbuserimage');
+                localStorage.removeItem('qbuseremailverify');
 
+            
 
-                localStorage.setItem('qbuserdata',JSON.stringify(response.data));
+                // localStorage.setItem('qbuserdata',JSON.stringify(response.data));
                 localStorage.setItem('qbuserlogin',true);
+                localStorage.setItem('qbuserid',responsedata.data._id);
+                localStorage.setItem('qbuseremail',responsedata.data.email);
+                localStorage.setItem('qbuserimage',responsedata.data.imagethumb);
+                localStorage.setItem('qbuseremailverify',responsedata.data.email_verify);
+
+                
 
                 //STORE IN REDUX STATE
                 props.storeUserDetails(response.data.data);
@@ -84,10 +95,20 @@ export class Register extends Component {
 
                 localStorage.removeItem('qbuserdata');
                 localStorage.removeItem('qbuserlogin');
+                localStorage.removeItem('qbuserid');
+                localStorage.removeItem('qbuseremail');
+                localStorage.removeItem('qbuserimage');
+                localStorage.removeItem('qbuseremailverify');
 
+            
 
-                localStorage.setItem('qbuserdata',JSON.stringify(response.data));
+                // localStorage.setItem('qbuserdata',JSON.stringify(response.data));
                 localStorage.setItem('qbuserlogin',true);
+                localStorage.setItem('qbuserid',responsedata.data._id);
+                localStorage.setItem('qbuseremail',responsedata.data.email);
+                localStorage.setItem('qbuserimage',responsedata.data.imagethumb);
+                localStorage.setItem('qbuseremailverify',responsedata.data.email_verify);
+
 
                 //STORE IN REDUX STATE
                 props.storeUserDetails(response.data.data);

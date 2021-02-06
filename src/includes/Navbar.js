@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchNavbarMenu,storeUserDetails} from '../actions'
 import { withRouter } from "react-router-dom";
+import { persistStore } from 'redux-persist';
 
 
 export class Navbar extends Component {
@@ -23,11 +24,21 @@ export class Navbar extends Component {
         // cookie.remove('qbuserdata', { path: '/' })
         // cookie.remove('qbuserlogin', { path: '/' })
 
-        localStorage.removeItem('qbuserdata');
-        localStorage.removeItem('qbuserlogin');
+       
+
+                localStorage.removeItem('qbuserdata');
+                localStorage.removeItem('qbuserlogin');
+                localStorage.removeItem('qbuserid');
+                localStorage.removeItem('qbuseremail');
+                localStorage.removeItem('qbuserimage');
+                localStorage.removeItem('qbuserimageemailverify');
+
+
 
         //REMOVE USER DETAILS FROM REDUX STATE
         this.props.storeUserDetails(null);
+
+        // persistStore(this.props).purge();
 
         this.props.history.push('/login');
     }
@@ -40,7 +51,6 @@ export class Navbar extends Component {
         var menus = this.props.menus;
 
         //GET LOGIN LOGOUT USER DATA
-        // const user = JSON.parse(localStorage.getItem('qbuserdata'));
         var user = this.props.user;
 
         //****DONT DELETE THIS OTHERWISE LOGIN THROUGH SOCIAL MEDIA WILL NOT WORK AND WIL SHOW SDK ERROR****
@@ -74,7 +84,9 @@ export class Navbar extends Component {
                                             </React.Fragment>
                                         :
                                             <React.Fragment>
-                                            <li> <Link exact to="/myaccount"> <img src={user.imagemedium} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
+                                            <li> <Link exact to="/myaccount"> <img src={user.imagethumb} alt="" style={{height: '30px', width: '30px', borderRadius: '50px'}} /> My Account</Link></li>
+                                            {/* <li> <Link exact to="/myaccount">My Account</Link></li> */}
+                                            
                                             <li> <Link exact to="/register" onClick={this.handleLogout}>Logout</Link></li>
                                             </React.Fragment>
                                         }

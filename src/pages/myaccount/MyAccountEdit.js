@@ -11,7 +11,6 @@ export class MyAccountEdit extends Component {
     constructor(props){
         super(props)
         this.state={
-            id:'',
             name:'',
             email:'',
             contact:'',
@@ -19,9 +18,6 @@ export class MyAccountEdit extends Component {
             city:'',
             state:'',
             country:'',
-            usertype:'',
-            email_verify:'',
-            image:null
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleImageChange=this.handleImageChange.bind(this);
@@ -32,16 +28,13 @@ export class MyAccountEdit extends Component {
         const user = this.props.user;
 
         this.setState({
-            id:user._id,
             name:user.name,
-            email:user.email,
+            email:localStorage.getItem('qbuseremail'),
             contact:user.contact,
             password:user.password,
             city:user.city,
             state:user.state,
             country:user.country,
-            usertype:user.usertype,
-            email_verify:user.email_verify,
         })
     }
 
@@ -59,38 +52,20 @@ export class MyAccountEdit extends Component {
         })
     }
 
+
+
     handleSubmit = e => {
         e.preventDefault();
 
         var props = this.props;
+        var id = localStorage.getItem('qbuserid');
 
-
-        var data = new FormData();
-        data.append('id',this.state.id);
-        data.append('name',this.state.name);
-        data.append('contact',this.state.contact);
-        data.append('password',this.state.password);
-        data.append('city',this.state.city);
-        data.append('state',this.state.state);
-        data.append('country',this.state.country);
-        data.append('image',this.state.image);
-        data.append('usertype',this.state.usertype);
-        data.append('email_verify',this.state.email_verify);
-
-
-
-        var headers = {
-            'Content-Type':'multipart/form-data'
-        }
-
-        API.put(`/user/userupdate/${this.state.id}`,data,headers)
+        API.put(`/user/userupdate/${id}`,this.state)
         .then(response=>{
             console.log(response.data)
 
-            //STORE IN REDUX STATE
             props.storeUserDetails(response.data.data);
           
-
             localStorage.removeItem('qbuserdata');
             localStorage.setItem('qbuserdata',JSON.stringify(response.data));
 
@@ -99,10 +74,11 @@ export class MyAccountEdit extends Component {
 
     }
 
+
+
     render() {
         //GET LOGIN LOGOUT USER DATA
         const user = this.state;
-        // const user = JSON.parse(localStorage.getItem('qbuserdata'));
        
         return (
             <Body>
@@ -119,42 +95,66 @@ export class MyAccountEdit extends Component {
                             </div>
 
                             <div className="col-md-9 mt-4">
+
                             <div className="card">
-                                <div className="card-body">
-                                    {/* <img width="70px" src={user.data[0].imagemedium} alt=""/> */}
-                                    <div className="dbox1 mt-4">
-                                    <form onSubmit={this.handleSubmit}>
-                                
-                                        <div className="form-fields row">
-                                            <span className="comment-form-author col-md-12">
-                                                <input name="email" type="email" placeholder="Your Email" value={user.email} readOnly />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="name" type="text" placeholder="Your Name" value={user.name} onChange={this.handleChange} />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="password" type="text" placeholder="Your Password" value={user.password} onChange={this.handleChange} />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="contact" type="text" placeholder="Your Contact" value={user.contact} onChange={this.handleChange}  />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="city" type="text" placeholder="Your City" value={user.city} onChange={this.handleChange}  />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="state" type="text" placeholder="Your State" value={user.state} onChange={this.handleChange}  />
-                                            </span>
-                                            <span className="comment-form-author col-md-12 mt-3">
-                                                <input name="country" type="text" placeholder="Your Country" value={user.country} onChange={this.handleChange}  />
-                                            </span>
-                                        </div>
+                            <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-6 mt-3">
+                                    
+                                            {/* <img width="70px" src={user.data[0].imagemedium} alt=""/> */}
+                                            {/* <div className="dbox1"> */}
+                                            <h5>Change Profile Details</h5>    
+
+                                            <form onSubmit={this.handleSubmit}>
+                                        
+                                                <div className="form-fields row">
+                                                    <span className="comment-form-author col-md-12">
+                                                        <input name="name" type="text" placeholder="Your Name" value={user.name} onChange={this.handleChange} />
+                                                    </span>
+                                                    <span className="comment-form-author col-md-12 mt-3">
+                                                        <input name="password" type="text" placeholder="Your Password" value={user.password} onChange={this.handleChange} />
+                                                    </span>
+                                                    <span className="comment-form-author col-md-12 mt-3">
+                                                        <input name="contact" type="text" placeholder="Your Contact" value={user.contact} onChange={this.handleChange}  />
+                                                    </span>
+                                                    <span className="comment-form-author col-md-12 mt-3">
+                                                        <input name="city" type="text" placeholder="Your City" value={user.city} onChange={this.handleChange}  />
+                                                    </span>
+                                                    <span className="comment-form-author col-md-12 mt-3">
+                                                        <input name="state" type="text" placeholder="Your State" value={user.state} onChange={this.handleChange}  />
+                                                    </span>
+                                                    <span className="comment-form-author col-md-12 mt-3">
+                                                        <input name="country" type="text" placeholder="Your Country" value={user.country} onChange={this.handleChange}  />
+                                                    </span>
+                                                </div>
+                                                <p className="form-submit">
+                                                    <input name="submit" type="submit" id="submit" className="submit btn-block" value="Update"/>
+                                                </p>
+                                            </form>
+                                            {/* </div> */}
+                                        
+                                </div>
+
+                                <div className="col-md-6 mt-3">
+                                   
+                                    <h5>Change Profile Image</h5>    
+                                    <form action="">
+                                        <span className="comment-form-author mt-3">
+                                            
+                                             <input name="country" type="file" onChange={this.handleChange}  />
+                                        </span>
                                         <p className="form-submit">
                                             <input name="submit" type="submit" id="submit" className="submit btn-block" value="Update"/>
                                         </p>
                                     </form>
-                                    </div>
+                                       
                                 </div>
                             </div>
+                            </div>
+                            </div>
+
+
+                            
                             </div>
                         </div>
 

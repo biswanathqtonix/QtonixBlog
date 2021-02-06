@@ -19,6 +19,7 @@ const persistConfig = {
   storage,
   stateReconciler: hardSet,
   whitelist: ['blog','menu','homedatas','page','userdetails']
+  // blacklist: ['homedatas']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -32,9 +33,6 @@ const store = createStore(persistedReducer, composeEnhancers(
 let persistor = persistStore(store);
 
 ReactDOM.render(
-  // <Provider store={store}>
-  //   <App />
-  // </Provider>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
     <App />

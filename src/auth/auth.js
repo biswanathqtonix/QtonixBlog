@@ -19,11 +19,12 @@ export const ProtectedRouteUser = ({
         if (logindata) {
 
           //Check Email Verify
-          var data = JSON.parse(localStorage.getItem('qbuserdata'));
+          // var data = JSON.parse(localStorage.getItem('qbuserdata'));
+          // var data = localStorage.getItem('qbuseremailverify');
           // var data=cookie.load('qbuserdata');
 
 
-          if(data.email_verify=='Not Verified'){
+          if(localStorage.getItem('qbuseremailverify') ==='Not Verified'){
             return <Redirect to="/emailverify" />
           }else{
             return <Component {...props} />;
