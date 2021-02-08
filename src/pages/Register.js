@@ -147,7 +147,20 @@ export class Register extends Component {
                     this.props.history.push('/myaccount');
 
                 }else{
-                    alert('Failed please try again')
+                    
+                    store.addNotification({
+                        title: 'Failed',
+                        message: 'Please try with anathor email',
+                        type: 'danger',                         
+                        container: 'top-right',                
+                        animationIn: ["animated", "fadeIn"],     
+                        animationOut: ["animated", "fadeOut"],   
+                        dismiss: {
+                          duration: 3000
+                        }
+                    })
+
+
                 }
 
             })

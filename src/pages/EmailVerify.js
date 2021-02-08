@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Body from '../includes/Body'
 import API from '../api/API'
+import $ from 'jquery'
+import { store } from 'react-notifications-component';
+import {storeUserDetails} from '../actions'
 
 export class EmailVerify extends Component {
-
 
     resendcode=(id,email)=>{
         var data = {id:id,email:email}
@@ -12,12 +14,60 @@ export class EmailVerify extends Component {
         .then(response=>{
             console.log(response.data);
         })
-
     } 
+
+
+    codeverify = e => {
+        e.preventDefault();
+
+        var id = $('#myid').val();
+        var code = $('#mycode').val();
+
+        API.post('/user/verify-email-code',{id:id,code:code})
+        .then(response=>{
+             var props = this.props;
+
+            if(response.data.response===true){
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Verification Success',
+                    type: 'success',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+
+        
+                localStorage.removeItem('qbuseremailverify');
+                localStorage.setItem('qbuseremailverify',response.data.data.email_verify);
+
+                props.storeUserDetails(response.data.data);
+
+                props.history.push('/myaccount');
+
+            }else{
+                store.addNotification({
+                    title: 'Failed',
+                    message: 'Wrong verification code',
+                    type: 'danger',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+            }
+
+        })
+    }
+
 
     render() {
         var user = this.props.user;
-        console.log(user);
         return (
             <Body>
                 <section id="content_main" className="clearfix mb-5 mt-5">
@@ -28,11 +78,12 @@ export class EmailVerify extends Component {
                                     <h1>Email Verification</h1>
                                     <p style={{marginTop: '-19px'}}>Hi {user.name} your e-mail verification code sent to your registrated email address {user.email}</p>
                                 </center>
-                                <form action="" method="post" id="commentform" className="comment-form">
+                                <form onSubmit={this.codeverify} className="comment-form">
                                     
                                     <div className="form-fields row">
+                                        <input type="text" id="myid" value={user._id} hidden/>
                                         <span className="comment-form-author col-md-12 mt-3">
-                                            <input id="author" name="email" type="text"  size={30} placeholder="Enter Email Verification Code" />
+                                            <input id="mycode"  type="text" size={30} placeholder="Enter Email Verification Code" />
                                         </span>
                                     </div>
                                     <p className="form-submit" style={{marginTop: '-25px'}}>
@@ -61,11 +112,8 @@ const mapStateToProps = (state) => ({
     user:state.userdetails
 })
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmailVerify)
+export default connect(mapStateToProps, {storeUserDetails})(EmailVerify)
 
 
 
