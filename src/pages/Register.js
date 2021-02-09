@@ -8,6 +8,8 @@ import SocialButton from '../includes/SocialButton'
 import { store } from 'react-notifications-component';
 import SimpleReactValidator from 'simple-react-validator';
 import {storeUserDetails} from '../actions'
+import {Link} from 'react-router-dom'
+import {Helmet} from "react-helmet";
 
 export class Register extends Component {
     constructor(props){
@@ -177,7 +179,9 @@ export class Register extends Component {
     render() {
         return (
             <Body>
-            
+            <Helmet>
+                <title>Register</title>
+                </Helmet>
             <section id="content_main" className="clearfix mb-5 mt-5">
                 <div className="container">
                     <div className="row main_content">
@@ -208,7 +212,7 @@ export class Register extends Component {
                                 </p>
                             </form>
                             <div style={{paddingTop: '58px'}}>
-                                <p>No account? <a href="" className="text-primary">Create one</a></p>
+                                <p>Already have an account? <Link exact to="/login" className="text-primary">Login</Link></p>
                             </div>
                             <div>
                             <center>

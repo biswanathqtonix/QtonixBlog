@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Navbar from '../includes/Navbar'
 import Footer from '../includes/Footer'
-import {fetchHomePage} from '../actions'
+import {fetchHomePage,websiteTheme} from '../actions'
 import { ProgressBar } from 'scrolling-based-progressbar';
 import {Helmet} from "react-helmet";
 
@@ -19,9 +19,10 @@ export class Body extends Component {
     }   
 
 
-    handleDarkModChange = (a) =>{
+    handleDarkModChange = (theme) =>{
         this.forceUpdate();
-        localStorage.setItem('theme', a);
+        this.props.websiteTheme(theme)
+        localStorage.setItem('theme', theme);
     }
 
    
@@ -41,7 +42,7 @@ export class Body extends Component {
             <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{metadata ? metadata.metatitle : 'Blog Website'}</title>
+                
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div id="themetype" className={`options_layout_wrapper jl_clear_at jl_radius jl_none_box_styles jl_border_radiuss jl_en_day_night `+mclass}>
@@ -100,4 +101,4 @@ const mapStateToProps = (state) => ({
     homepage:state.homedatas
 })
 
-export default connect(mapStateToProps, {fetchHomePage})(Body)
+export default connect(mapStateToProps, {fetchHomePage,websiteTheme})(Body)

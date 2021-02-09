@@ -10,6 +10,7 @@ import HomeCatView1 from '../includes/home/HomeCatView1'
 import HomeCatView2 from '../includes/home/HomeCatView2'
 import HomeCatView3 from '../includes/home/HomeCatView3'
 // import HomeView4 from '../includes/home/HomeView4'
+import {Helmet} from "react-helmet";
 
 
 export class Home extends Component {
@@ -27,6 +28,11 @@ export class Home extends Component {
                         "metadescription": getdata===null ? 'Loading...' : getdata.seohome.metadescription,
                         "metakeyword": "No Key Word",
                     }}>
+                    <Helmet>
+                        <title>Home</title>
+                    </Helmet>
+
+                        
                                         
                     <div className="mobile_menu_overlay" />
                         <div className="jl_home_bw">

@@ -5,6 +5,7 @@ import PostView1 from '../../includes/blog/PostView1'
 import PostView1Loader from '../../includes/blog/PostView1Loader'
 import {fetchAllBlogs} from '../../actions'
 import SidebarBlog from './SidebarBlog'
+import {Helmet} from "react-helmet";
 
 export class BlogAll extends Component {
 
@@ -18,6 +19,9 @@ export class BlogAll extends Component {
         return (
             <React.Fragment>
                 <Body>
+                <Helmet>
+                    <title>Blogs</title>
+                </Helmet>
                 <div className="jl_post_loop_wrapper" id="wrapper_masonry">
                     <div className="container">
                         <div className="row">

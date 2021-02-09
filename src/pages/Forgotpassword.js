@@ -3,6 +3,9 @@ import Body from '../includes/Body'
 import $ from 'jquery'
 import API from '../api/API'
 import { store } from 'react-notifications-component';
+import {Link} from 'react-router-dom'
+import {Helmet} from "react-helmet";
+
 
 export default class Forgotpassword extends Component {
 
@@ -70,7 +73,7 @@ export default class Forgotpassword extends Component {
                                 </p>
                             </form>
                             <div style={{paddingTop: '58px'}}>
-                                <p>Go to <a href="" className="text-primary">Login</a> page</p>
+                                <p>Go to <Link exact to="/login" className="text-primary">Login</Link> page</p>
                             </div>
                             <div>
                         </div>

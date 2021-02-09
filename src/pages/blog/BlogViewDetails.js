@@ -6,10 +6,11 @@ import API from '../../api/API'
 import Loader from 'react-loader-spinner'
 import Moment from 'react-moment';
 import RelatedArticleView from '../../includes/blog/RelatedArticleView'
-import { FacebookLoginButton } from "react-social-login-buttons";
-import { GoogleLoginButton } from "react-social-login-buttons";
+// import { FacebookLoginButton } from "react-social-login-buttons";
+// import { GoogleLoginButton } from "react-social-login-buttons";
 import cookie from 'react-cookies'
 import { DiscussionEmbed } from 'disqus-react';
+import {Helmet} from "react-helmet";
 
 
 export class BlogViewDetails extends Component {
@@ -91,16 +92,29 @@ export class BlogViewDetails extends Component {
         //GET LOGIN LOGOUT USER DATA
         const user = cookie.load('qbuserdata');
 
-        console.log(this.state.data.data)
-
+        const bd=this.state.data.data;
+        console.log(bd)
+        
         return (
             <React.Fragment>
                 <Body>
                 
+                    {bd !== undefined
+                    ?
+                    <Helmet>
+                    <title>{bd.metatitle}</title>
+                    <meta name="description" content={bd.metadescription} />
+                    </Helmet>
+                    :
+                    <Helmet>
+                    <title>Qtonix Blog</title>
+                    </Helmet>
+                    }
                     <div className="mobile_menu_overlay" />
                     <section id="content_main" className="clearfix jl_spost">
                         <div className="container">
                         <div className="row main_content">
+                            
                             <div className="col-md-8 loop-large-post" id="content">
                             <div className="widget_container content_page">
 
@@ -116,12 +130,25 @@ export class BlogViewDetails extends Component {
                                         <>
                                             {this.state.data.data !== null
                                             ?
+                                            
                                             <div className="post-2970 post type-post status-publish format-gallery has-post-thumbnail hentry category-business tag-inspiration tag-morning tag-tip tag-tutorial post_format-post-format-gallery" id="post-2970">
+                                                
+                                                {this.props.theme==='today'
+                                                ?
+                                                <h1 className="single_post_title_main stkytop">{this.state.data.data.title}</h1>
+
+                                                :
+                                                <h1 className="single_post_title_main stkytopnight">{this.state.data.data.title}</h1>
+
+                                                }
+
+
                                                 <div className="single_section_content box blog_large_post_style">
                                                     <div className="jl_single_style2">
+                                                        
                                                     <div className="single_post_entry_content single_bellow_left_align jl_top_single_title jl_top_title_feature">
                                                         <span className="meta-category-small single_meta_category"><a className="post-category-color-text" style={{background: '#eba845'}} href="#">{this.state.data.data.category}</a></span> 
-                                                        <h1 className="single_post_title_main">{this.state.data.data.title}</h1>
+                                                        {/* <h1 className="single_post_title_main">{this.state.data.data.title}</h1> */}
                                                         <p className="post_subtitle_text">{this.state.data.data.description}</p>
                                                         <img src={process.env.REACT_APP_BACKENDURL+'/'+this.state.data.data.image} className="w-100 mt-3" alt=""/>
                                                         <span className="jl_post_meta"><span className="post-date"><i className="jli-pen" />J<Moment format="MMMM M, YYYY">{this.state.data.data.createdAt}</Moment></span><span className="meta-comment"><i className="jli-comments" /><a href="#respond">0 Comment</a></span></span>
@@ -311,11 +338,8 @@ export class BlogViewDetails extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+    theme:state.theme
 })
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogViewDetails)
+export default connect(mapStateToProps)(BlogViewDetails)

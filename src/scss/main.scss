@@ -15,9 +15,9 @@
     margin-left: 5px;
 }
 
-// .myvh{
-//     height: 73.2vh;
-// }
+.jlm_w {
+    height: 24px !important;
+}
 
 
 html, 
@@ -91,3 +91,33 @@ body {
     display: none i !important;
 }
 // ***** DISQUS ***** //
+
+
+
+// ***** BLOG DETAILS STICKEY TOP ***** //
+.stkytop{
+    position: sticky;
+    top: 67px;
+    background-color: white !important;
+    color: black !important;
+    padding: 17px 0px;
+    z-index: 999;
+    transition: all .2s ease 0s;
+}
+
+
+
+.stkytopnight{
+    position: sticky;
+    top: 67px;
+    background-color: #1a1a1a !important;
+    color: white !important;
+    padding: 17px 0px;
+    z-index: 999;
+    transition: all .2s ease 0s;
+
+}
+#content_main, #wrapper_masonry {
+    padding-top: 17px;
+}
+// ***** BLOG DETAILS STICKEY TOP ***** //

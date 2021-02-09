@@ -18,7 +18,7 @@ const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: hardSet,
-  whitelist: ['blog','menu','homedatas','page','userdetails']
+  whitelist: ['theme','blog','menu','homedatas','page','userdetails']
   // blacklist: ['homedatas']
 }
 

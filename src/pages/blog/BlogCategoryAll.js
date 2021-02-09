@@ -6,6 +6,7 @@ import PostView1 from '../../includes/blog/PostView1'
 import {fetchAllBlogsCategory,fetchCategoryBlog} from '../../actions'
 import PostView1Loader from '../../includes/blog/PostView1Loader'
 import SidebarBlog from './SidebarBlog'
+import {Helmet} from "react-helmet";
 
 export class BlogCategoryAll extends Component {
 
@@ -28,6 +29,10 @@ export class BlogCategoryAll extends Component {
         return (
             <React.Fragment>
                 <Body>
+                <Helmet>
+                    <title>{this.props.match.params.category.replace(/\b\w/g, l => l.toUpperCase())} Blog</title>
+                    
+                </Helmet>
                 <div className="jl_post_loop_wrapper" id="wrapper_masonry">
                     <div className="container">
                         <div className="row">

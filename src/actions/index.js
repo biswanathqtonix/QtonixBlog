@@ -1,5 +1,11 @@
 import API from '../api/API';
 
+// * THEME CHANGE * //
+export const websiteTheme = theme => async dispatch => {
+    dispatch({type:'THEME_CHANGE',payload:theme})
+}
+
+
 // * GET NAVBAR MENU * //
 export const fetchNavbarMenu = () => async dispatch => {
     const response = await API.get('menu/5ff7218cb35f4f4170697f28');

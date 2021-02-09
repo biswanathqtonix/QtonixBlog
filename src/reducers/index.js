@@ -5,6 +5,7 @@ import blogReducer from './blogReducer'
 import homeReducer from './homeReducer'
 import pageReducer from './pageReducer'
 import userReducer from './userReducer'
+import themeReducer from './themeReducer'
 
 // const songReducer = () => {
 //     return[
@@ -18,9 +19,10 @@ import userReducer from './userReducer'
 
 export default combineReducers({
     // songs:songReducer,
+    theme:themeReducer,
     menu:menuReducer,
     blog:blogReducer,
     homedatas:homeReducer,
     page:pageReducer,
-    userdetails:userReducer
+    userdetails:userReducer,
 })

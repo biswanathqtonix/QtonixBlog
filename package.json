@@ -28,6 +28,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-share": "^4.3.1",
+    "react-social-icons": "^4.1.0",
     "react-social-login": "^3.4.10",
     "react-social-login-buttons": "^3.1.2",
     "react-truncate": "^2.4.0",
@@ -38,6 +39,7 @@
     "scrolling-based-progressbar": "^1.21.0",
     "simple-react-comments": "^1.1.0",
     "simple-react-validator": "^1.6.0",
+    "social-media-icons-react": "^1.1.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

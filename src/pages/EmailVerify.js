@@ -5,6 +5,7 @@ import API from '../api/API'
 import $ from 'jquery'
 import { store } from 'react-notifications-component';
 import {storeUserDetails} from '../actions'
+import {Helmet} from "react-helmet";
 
 export class EmailVerify extends Component {
 
