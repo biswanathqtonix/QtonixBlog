@@ -9,6 +9,7 @@ import RelatedArticleView from '../../includes/blog/RelatedArticleView'
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import cookie from 'react-cookies'
+import { DiscussionEmbed } from 'disqus-react';
 
 
 export class BlogViewDetails extends Component {
@@ -209,7 +210,17 @@ export class BlogViewDetails extends Component {
                                                     </div>
 
 
-
+                                                    <DiscussionEmbed
+                                                        shortname='example'
+                                                        config={
+                                                            {
+                                                                url: 'http://qtonixblogadmin.netlify.app/blogs/finance/why-ending-the-organ-donation-waitlist-can-save-countless-lives-and-billions-of-dollars',
+                                                                identifier: '12123',
+                                                                title: 'Hello',
+                                                                language: 'zh_TW' //e.g. for Traditional Chinese (Taiwan)	
+                                                            }
+                                                        }
+                                                    />
                                                     
                                                     </div>
                                                 </div>
