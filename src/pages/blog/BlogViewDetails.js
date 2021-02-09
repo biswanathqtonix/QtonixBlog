@@ -91,6 +91,8 @@ export class BlogViewDetails extends Component {
         //GET LOGIN LOGOUT USER DATA
         const user = cookie.load('qbuserdata');
 
+        console.log(this.state.data.data)
+
         return (
             <React.Fragment>
                 <Body>
@@ -153,17 +155,13 @@ export class BlogViewDetails extends Component {
                                                     </div>
                                                     <div id="respond" className="comment-respond">
 
-                                                    <div className="row">
-
+                                                    {/* <div className="row">
                                                     <div className="col-md-12 mt-3">
                                                        <h6>
                                                         <img className="ucomment_img" src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" alt="" />
                                                         <span className="ml-2 ucomment_head">John Doe <span className="ucomment_head_time">(2 days ago)</span> </span> <br/> <span className="ucomment_headsub">johndoe@gmail.com</span> </h6> 
                                                         <p className="ucomment_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eos neque voluptatibus numquam velit. Laudantium, et iure, eum, deleniti rerum soluta quaerat vitae repellat facilis sequi doloribus. Voluptatum, exercitationem recusandae.</p>
                                                     </div>
-                                                    
-
-
                                                     {user===undefined
                                                     ?
                                                     <div className="col-md-12 mt-5">
@@ -182,7 +180,6 @@ export class BlogViewDetails extends Component {
                                                     <div className="col-md-12 mt-2">
                                                         <h3 id="reply-title" className="comment-reply-title">Leave a Reply</h3>
                                                         <form action="http://jellywp.com/html/sprasa-preview/post-layout-1.html" method="post" id="commentform" className="comment-form">
-                                                            {/* <p className="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span className="required">*</span></p> */}
                                                             <p className="comment-form-comment">
                                                                 <textarea className="u-full-width" id="comment" name="comment" cols={45} rows={8} aria-required="true" placeholder="Comment" defaultValue={""} />
                                                             </p>
@@ -194,33 +191,26 @@ export class BlogViewDetails extends Component {
                                                                 <span className="comment-form-url col-md-4">
                                                                     <input id="url" name="url" type="text" placeholder="Web URL" /></span>
                                                             </div>
-                                                            {/* <p className="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" defaultValue="yes" /><label htmlFor="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p> */}
+                                                            
                                                             <p className="form-submit"><input name="submit" type="submit" id="submit" className="submit" defaultValue="Post Comment" /><input type="hidden" name="comment_post_ID" id="comment_post_ID" /></p>
                                                         </form>
                                                     </div>
                                                     }
-                                                    
-
-                                                    
-
-
-                                                    
-
-
-                                                    </div>
+                                                    </div> */}
 
 
                                                     <DiscussionEmbed
-                                                        shortname='example'
+                                                        shortname='QtonixBlog'
                                                         config={
                                                             {
-                                                                url: 'https://qtonixblog.netlify.app/',
-                                                                identifier: '12123',
-                                                                title: 'Hello',
-                                                                language: 'zh_TW' //e.g. for Traditional Chinese (Taiwan)	
+                                                                url: `${process.env.REACT_APP_WEBSITEURL}/${this.state.data.data.totalurl}`,
+                                                                identifier: `QB-${this.state.data.data._id}`,
+                                                                title: this.state.data.data.title,
+                                                                language: 'en'	
                                                             }
                                                         }
                                                     />
+
                                                     
                                                     </div>
                                                 </div>
