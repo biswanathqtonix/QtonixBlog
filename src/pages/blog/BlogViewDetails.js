@@ -214,7 +214,7 @@ export class BlogViewDetails extends Component {
                                                         shortname='example'
                                                         config={
                                                             {
-                                                                url: 'http://qtonixblogadmin.netlify.app/blogs/finance/why-ending-the-organ-donation-waitlist-can-save-countless-lives-and-billions-of-dollars',
+                                                                url: 'https://qtonixblog.netlify.app/',
                                                                 identifier: '12123',
                                                                 title: 'Hello',
                                                                 language: 'zh_TW' //e.g. for Traditional Chinese (Taiwan)	
