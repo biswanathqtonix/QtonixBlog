@@ -26,7 +26,15 @@ export class MyAccount extends Component {
                             <div className="col-md-9 mt-4">
                             <div className="card">
                                 <div className="card-body">
-                                    <img width="70px" src={user.imagethumb} alt=""/>
+
+                                    {user.imagethumb === undefined
+                                    ?
+                                        <img src='https://www.centrik.in/wp-content/uploads/2017/02/user-image-.png' alt="" style={{height: '120px', width: '120px'}} /> 
+                                    :
+                                        <img width="70px" src={user.imagethumb} alt=""/>
+ 
+                                    }
+
                                     <div className="dbox1 mt-4">
                                         <p>Name: {user.name}</p>
                                         <p>Email: {user.email}</p>

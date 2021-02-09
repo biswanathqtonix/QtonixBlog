@@ -12,7 +12,21 @@ export class EmailVerify extends Component {
         var data = {id:id,email:email}
         API.post('/user/send-email-verification-code',data)
         .then(response=>{
-            console.log(response.data);
+            if(response.data.response===true){
+                store.addNotification({
+                    title: 'Success',
+                    message: 'Please check your email inbox',
+                    type: 'success',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                      duration: 3000
+                    }
+                })
+            }else{
+                alert('Failed');
+            }
         })
     } 
 
@@ -22,8 +36,12 @@ export class EmailVerify extends Component {
 
         var id = $('#myid').val();
         var code = $('#mycode').val();
+        var data = {
+            id:id,
+            code:code
+        }
 
-        API.post('/user/verify-email-code',{id:id,code:code})
+        API.post('/user/verify-email-code',data)
         .then(response=>{
              var props = this.props;
 
@@ -40,13 +58,29 @@ export class EmailVerify extends Component {
                     }
                 })
 
-        
+                localStorage.removeItem('qbuserdata');
+                localStorage.removeItem('qbuserlogin');
+                localStorage.removeItem('qbuserid');
+                localStorage.removeItem('qbuseremail');
+                localStorage.removeItem('qbuserimage');
                 localStorage.removeItem('qbuseremailverify');
+
+            
+
+                // localStorage.setItem('qbuserdata',JSON.stringify(response.data));
+                localStorage.setItem('qbuserlogin',true);
+                localStorage.setItem('qbuserid',response.data.data._id);
+                localStorage.setItem('qbuseremail',response.data.data.email);
+                localStorage.setItem('qbuserimage',response.data.data.imagethumb);
                 localStorage.setItem('qbuseremailverify',response.data.data.email_verify);
+
+        
+                // localStorage.removeItem('qbuseremailverify');
+                // localStorage.setItem('qbuseremailverify',response.data.data.email_verify);
 
                 props.storeUserDetails(response.data.data);
 
-                props.history.push('/myaccount');
+                this.props.history.push('/myaccount');
 
             }else{
                 store.addNotification({
