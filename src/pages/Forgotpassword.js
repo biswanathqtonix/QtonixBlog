@@ -53,7 +53,9 @@ export default class Forgotpassword extends Component {
     render() {
         return (
             <Body>
-            
+            <Helmet>
+                <title>Password Reset</title>
+            </Helmet>
             <section id="content_main" className="clearfix mb-5 mt-5">
                 <div className="container">
                     <div className="row main_content">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Body from '../../includes/Body'
-import cookie from 'react-cookies'
+// import cookie from 'react-cookies'
 import Sidebar from './Sidebar'
 import API from '../../api/API'
 

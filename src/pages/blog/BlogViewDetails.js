@@ -8,7 +8,7 @@ import Moment from 'react-moment';
 import RelatedArticleView from '../../includes/blog/RelatedArticleView'
 // import { FacebookLoginButton } from "react-social-login-buttons";
 // import { GoogleLoginButton } from "react-social-login-buttons";
-import cookie from 'react-cookies'
+// import cookie from 'react-cookies'
 import { DiscussionEmbed } from 'disqus-react';
 import {Helmet} from "react-helmet";
 
@@ -83,14 +83,11 @@ export class BlogViewDetails extends Component {
     }
 
 
-    // componentDidUpdate(){
-    //     window.scrollTo(0, 0);
-    // }
 
     render() {
 
         //GET LOGIN LOGOUT USER DATA
-        const user = cookie.load('qbuserdata');
+        // const user = cookie.load('qbuserdata');
 
         const bd=this.state.data.data;
         console.log(bd)

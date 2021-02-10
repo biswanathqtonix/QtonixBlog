@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchNavbarMenu,storeUserDetails} from '../actions'
 import { withRouter } from "react-router-dom";
-// import { persistStore } from 'redux-persist';
-import { SocialIcon } from 'react-social-icons';
 
 
 export class Navbar extends Component {
@@ -22,10 +20,6 @@ export class Navbar extends Component {
 
     handleLogout = e => {
         e.preventDefault();
-        // cookie.remove('qbuserdata', { path: '/' })
-        // cookie.remove('qbuserlogin', { path: '/' })
-
-       
 
                 localStorage.removeItem('qbuserdata');
                 localStorage.removeItem('qbuserlogin');
@@ -66,7 +60,7 @@ export class Navbar extends Component {
                                 <div className="col-md-12">
                                 <div className="menu-primary-container navigation_wrapper">
                                     <ul id="jl_top_menu" className="jl_main_menu">
-                                    <li className="menu-item current-menu-item current_page_item"> <a href="index-2.html">Home<span className="border-menu" /></a></li>
+                                    <li className="menu-item current-menu-item current_page_item"> <a>Home<span className="border-menu" /></a></li>
                                     <li className="menu-item menu-item-4278"> <a >About Us<span className="border-menu" /></a></li>
                                     <li className="menu-item menu-item-4279"> <a >special offer<span className="border-menu" /></a></li>
                                     <li className="menu-item menu-item-4275"> <a >Info!!<span className="border-menu" /></a></li>
@@ -74,7 +68,6 @@ export class Navbar extends Component {
                                 </div>
                                 <div className="jl_top_cus_social">
                                     <div className="menu_mobile_share_wrapper">
-                                    {/* <span className="jl_hfollow">Share us</span> */}
                                     <ul className="social_icon_header_top jl_socialcolor">
 
                                         {user===null
@@ -122,23 +115,6 @@ export class Navbar extends Component {
                                     <div className="menu_mobile_icons">
                                     <div className="jlm_w"><span className="jlma" /><span className="jlmb" /><span className="jlmc" /></div>
                                     </div>
-                                    {/* <div className="search_header_wrapper search_form_menu_personal_click"><i className="jli-search" /></div>
-                                    <div className="jl_h_cart nav-cart is-hover">
-                                    <a className="jl_l_cart cart-link"  title="view cart"> <span className="jl_i_cart"><i className="jli-bag" /><em className="cart-counter jl_count_cart">11</em></span></a>
-                                    <div className="jl-nav-cart jl-hshow">
-                                        <div className="jl-cart-wrap woocommerce">
-                                        <div className="widget_shopping_cart_content">
-                                            <ul className="woocommerce-mini-cart cart_list product_list_widget">
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button"> × </a><a ><img width={380} height={380} src="img/herdian-indraputra-6kNVJ1fr3Ug-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />thread</a> <span className="quantity"> 9 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>12.00</bdi></span></span></li>
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button" aria-label="Remove this item"> × </a><a ><img width={380} height={380} src="img/irene-kredenets-maO-qIKLqi8-unsplash-1-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />cup</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>35.00</bdi></span></span></li>
-                                            <li className="woocommerce-mini-cart-item mini_cart_item"> <a  className="remove remove_from_cart_button"> × </a><a ><img width={380} height={380} src="img/annie-spratt-fbAnIjhrOL4-unsplash-380x380.jpg" className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" />Flowerpot Plant</a> <span className="quantity"> 1 × <span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>2.00</bdi></span></span></li>
-                                            </ul>
-                                            <p className="woocommerce-mini-cart__total total"> <strong>Subtotal:</strong><span className="woocommerce-Price-amount amount"> <bdi><span className="woocommerce-Price-currencySymbol">$</span>145.00</bdi></span></p>
-                                            <p className="woocommerce-mini-cart__buttons buttons"><a  className="button wc-forward">View cart</a><a  className="button checkout wc-forward">Checkout</a></p>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div> */}
 
                                     {this.props.children}
 
