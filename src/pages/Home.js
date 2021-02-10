@@ -9,7 +9,7 @@ import HomeView3 from '../includes/home/HomeView3'
 import HomeCatView1 from '../includes/home/HomeCatView1'
 import HomeCatView2 from '../includes/home/HomeCatView2'
 import HomeCatView3 from '../includes/home/HomeCatView3'
-// import HomeView4 from '../includes/home/HomeView4'
+
 import {Helmet} from "react-helmet";
 
 
