@@ -6,6 +6,7 @@ import homeReducer from './homeReducer'
 import pageReducer from './pageReducer'
 import userReducer from './userReducer'
 import themeReducer from './themeReducer'
+import footerModalReducer from './footerModalReducer'
 
 // const songReducer = () => {
 //     return[
@@ -25,4 +26,5 @@ export default combineReducers({
     homedatas:homeReducer,
     page:pageReducer,
     userdetails:userReducer,
+    footerModal:footerModalReducer
 })

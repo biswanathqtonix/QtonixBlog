@@ -6,6 +6,24 @@ export const websiteTheme = theme => async dispatch => {
 }
 
 
+// * FOOTER MODAL * //
+export const callFooterModal = data => async dispatch => {
+    dispatch({type:'SHOW_FOOTER_MODAL',payload:data})
+}
+export const footerModalTab1 = data => async dispatch => {
+    dispatch({type:'IS_FOOTER_MODAL_TAB1_OPEN',payload:data})
+}
+export const footerModalTab2 = data => async dispatch => {
+    dispatch({type:'IS_FOOTER_MODAL_TAB2_OPEN',payload:data})
+}
+export const footerModalTab3 = data => async dispatch => {
+    dispatch({type:'IS_FOOTER_MODAL_TAB3_OPEN',payload:data})
+}
+export const footerModalClose = data => async dispatch => {
+    dispatch({type:'TOTAL_MODAL_CLOSE',payload:data})
+}
+
+
 // * GET NAVBAR MENU * //
 export const fetchNavbarMenu = () => async dispatch => {
     const response = await API.get('menu/5ff7218cb35f4f4170697f28');
