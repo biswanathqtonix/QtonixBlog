@@ -102,7 +102,7 @@ export class Body extends Component {
                              </>
                             }
                         </Navbar>
-                        <ProgressBar height="5px" 
+                        <ProgressBar height="5px" top="81px"
                         ProgressBarStyle={{backgroundColor:'#1976d2'}} />
 
                     {this.props.children}
