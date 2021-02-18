@@ -5,11 +5,27 @@ import Footer from '../includes/Footer'
 import {fetchHomePage,websiteTheme,callFooterModal,footerModalTab1,footerModalTab2,footerModalTab3,footerModalClose} from '../actions'
 import { ProgressBar } from 'scrolling-based-progressbar';
 import {Helmet} from "react-helmet";
-import footerModalReducer from '../reducers/footerModalReducer'
+import API from '../api/API'
+// import footerModalReducer from '../reducers/footerModalReducer'
 
 
 export class Body extends Component {
 
+    constructor(props){
+        super(props)
+        this.state={
+            name:'',
+            email:'',
+            contact:''
+        }
+        this.handleTextChange=this.handleTextChange.bind(this);
+    }
+
+    handleTextChange(e){
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
 
     componentDidMount(){
 
@@ -31,6 +47,8 @@ export class Body extends Component {
 
     handleYesNo(e){
         this.props.footerModalTab2(e)
+        this.props.footerModalTab1(false);
+
     }
 
     closeModal(e){
@@ -44,9 +62,14 @@ export class Body extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        this.props.footerModalTab1(false);
-        this.props.footerModalTab2(false);
-        this.props.footerModalTab3(true);
+        API.post('/googlenotification',this.state)
+        .then(response=>{
+            this.props.footerModalTab1(false);
+            this.props.footerModalTab2(false);
+            this.props.footerModalTab3(true);
+        })
+
+        
 
     }
 
@@ -116,21 +139,16 @@ export class Body extends Component {
            
 
             {/* isFooterModalOpen */}
-               
-            
             {footerModal===undefined
                 ?
                 <></>  
                 :
-
                 // CHECK MODAL WILL BE OPEN OR NOT
                 footerModal.isFooterModalOpen===true
                 ?
                     <div id="bottom-box" className="form"> 
                         <span className="footercancel cursorpointer" onClick={(e)=>this.closeModal(false)}>X</span>
                         <div className="step step-1">
-                            
-                            
                             {/* CHECK MAIN TAB */}
                             {footerModal.isFooterMainTab===true
                             ?
@@ -138,16 +156,13 @@ export class Body extends Component {
                             <div className="logo"><img className="img" src="https://neilpatel.com/wp-content/themes/neilpatel/images/google.svg" width={26} height={26} alt="Google" /></div>
                             <div className="textftr">
                                 <p className="q">Do you want more traffic from Google?</p>
-                                <p className="a"><span className="yes cursorpointer" onClick={(e)=>this.handleYesNo(true)}> <img src="https://neilpatel.com/wp-content/themes/neilpatel/images/yes.svg" alt=""/>  Yes, I do</span><span className="no cursorpointer"onClick={(e)=>this.handleYesNo(false)}><img src="https://neilpatel.com/wp-content/themes/neilpatel/images/no.svg" alt=""/> Not Now</span></p>
+                                <p className="a"><span className="yes cursorpointer" onClick={(e)=>this.handleYesNo(true)}> <img src="https://neilpatel.com/wp-content/themes/neilpatel/images/yes.svg" alt=""/>  Yes, I do</span><span className="no cursorpointer" onClick={(e)=>this.closeModal(false)}><img src="https://neilpatel.com/wp-content/themes/neilpatel/images/no.svg" alt=""/> Not Now</span></p>
                             </div>
                             </>
                             :
                             <>
                             </>
                             }
-                            
-        
-                        
                             {/* CHECK IF TAB IS OPEN OR NOT */}
                             {footerModal.isFooterModalTab2Open===true
                                 ?
@@ -158,7 +173,13 @@ export class Body extends Component {
                                             <p className="text-white boxwhte2">We’ve driven 1.3 billion visitors to startups and Fortune 100 brands. Fill out the form below to schedule your call.</p>
                                             <form action="" onSubmit={this.handleSubmit}>
                                                 <div className="form-group">
-                                                    <input type="text" className="form-control boxforms" placeholder="What’s your name?" />
+                                                    <input type="text" className="form-control boxforms" name="name" onChange={this.handleTextChange} placeholder="What’s your name?" required/>
+                                                </div>
+                                                <div className="form-group">
+                                                    <input type="text" className="form-control boxforms" name="email" onChange={this.handleTextChange} placeholder="What’s your email?" required/>
+                                                </div>
+                                                <div className="form-group">
+                                                    <input type="text" className="form-control boxforms" name="contact" onChange={this.handleTextChange} placeholder="What’s your contact?" required/>
                                                 </div>
                                                 <input type="submit" className="btn btn-block" value="BOOK A CALL"/>
                                             </form>
@@ -168,42 +189,27 @@ export class Body extends Component {
                                     <>
                                     </>
                             }
-
-
                             {/* SUCCESS MESSAGE */}
                             {footerModal.isFooterModalSubmit===true
                             ?
                             <>
-                            Thank You...
+                           
+                            <img className="cd1" src="https://hacisouthsudan.org/account/includes/PAYMENTS/img/success.gif"/>
+                            Thank You. Your submission has been sent.
+                           
+                            
                             </>
                             :
                             <>
 
                             </>
                             }
-                            
-
-
-
                         </div>
                     </div>
                 :
                 <>
                 </>
-
-
-                
-                
-
-
-
-
             }
-
-
-
-            
-            
             </>
         )
     }
